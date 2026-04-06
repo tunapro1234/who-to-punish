@@ -155,15 +155,19 @@ def main():
     parser = argparse.ArgumentParser(description="Ertan et al. 2009 replication")
     parser.add_argument("-n", type=int, default=10, help="Number of agents")
     parser.add_argument("--model", default="qwen/qwen3.6-plus:free")
-    parser.add_argument("--big5", action="store_true", help="Use Big Five personality agents")
+    parser.add_argument("--big5", action="store_true", help="Use BFI-2 personality agents (balanced profiles)")
+    parser.add_argument("--random-personalities", action="store_true", help="Use random BFI-2 personality agents")
     args = parser.parse_args()
 
     exp = build(model=args.model)
 
     factory = PersonalityFactory()
     if args.big5:
-        agents = factory.create_population(per_archetype=max(1, args.n // 5))
-        print(f"Big Five agents: {len(agents)}", flush=True)
+        agents = factory.create_population(per_profile=max(1, args.n // 5))
+        print(f"BFI-2 agents: {len(agents)}", flush=True)
+    elif args.random_personalities:
+        agents = factory.create_random_population(n=args.n)
+        print(f"Random personality agents: {len(agents)}", flush=True)
     else:
         agents = factory.create_default(n=args.n)
 
