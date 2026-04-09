@@ -214,14 +214,14 @@ SENTENCES = {
 
 DOMAINS = ["extraversion", "agreeableness", "conscientiousness", "neuroticism", "openness"]
 
-# ── Profiles with calibrated weights (for Step 3.5 Flash) ───────────
-# From /srv/behave/personality/results/calibrated_profiles.json
-# Weights are on the -3 to +3 scale
+# ── Profiles (uncalibrated — raw BFI-2-Expanded levels) ──────────────
+# high=+2, low=-2, average=0 on the sentence bank scale
+# No pre-calibration: document any bias rather than compensating for it
 
 PROFILES = {
     "cooperative": {
-        "extraversion": 0, "agreeableness": 1, "conscientiousness": 1,
-        "neuroticism": -1, "openness": -1,
+        "extraversion": 0, "agreeableness": 2, "conscientiousness": 2,
+        "neuroticism": -2, "openness": 0,
     },
     "selfish": {
         "extraversion": 0, "agreeableness": -2, "conscientiousness": -2,
@@ -236,7 +236,7 @@ PROFILES = {
         "neuroticism": 2, "openness": -2,
     },
     "average": {
-        "extraversion": 0, "agreeableness": -1, "conscientiousness": 0,
+        "extraversion": 0, "agreeableness": 0, "conscientiousness": 0,
         "neuroticism": 0, "openness": 0,
     },
 }
