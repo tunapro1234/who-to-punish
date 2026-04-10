@@ -1,0 +1,51 @@
+agent,contrib_no_punishment,contrib_punish_high,contrib_punish_low,contrib_unrestricted,contribution,punish_amount_cooperate,punish_amount_freerider,punish_amount_mixed,punish_target_cooperate,punish_target_freerider,punish_target_mixed,vote_punish_high,vote_punish_low
+bot_1,10,0,20,10,10,0,2,1,Nobody,Below-average contributors,Below-average contributors,No,No
+bot_2,10,0,15,10,10,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_3,20,10,20,10,20,0,0,0,Nobody,Nobody,Nobody,No,No
+bot_4,12,8,16,12,10,0,2,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_5,0,0,20,10,10,0,3,2,Lowest contributor,Lowest contributor,Lowest contributor,No,Yes
+bot_6,20,0,20,0,10,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_7,5,0,15,10,10,0,2,1,Nobody,Lowest contributor,Lowest contributor,No,No
+bot_8,10,0,20,10,12,0,2,0,Nobody,Lowest contributor,Nobody,No,Yes
+bot_9,10,5,15,10,10,0,2,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_10,10,5,15,10,15,0,2,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_11,10,5,15,15,10,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_12,20,0,20,20,15,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_13,15,10,20,15,15,0,3,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_14,10,0,18,10,10,0,1,0,Nobody,Below-average contributors,Nobody,No,Yes
+bot_15,20,20,20,20,20,0,0,0,Nobody,Nobody,Nobody,No,Yes
+bot_16,15,0,20,10,10,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,No
+bot_17,3,0,10,10,10,0,2,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_18,20,0,20,10,20,0,3,2,Nobody,Below-average contributors,Below-average contributors,No,Yes
+bot_19,20,0,20,10,15,0,3,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_20,20,10,20,15,20,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,No
+bot_21,10,0,20,20,20,0,2,2,Nobody,Below-average contributors,Below-average contributors,No,Yes
+bot_22,20,0,20,10,20,0,3,2,Nobody,Below-average contributors,Below-average contributors,No,Yes
+bot_23,10,0,15,10,10,0,3,3,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_24,10,5,15,10,10,0,3,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_25,10,0,15,10,10,0,3,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_26,20,20,20,20,20,0,0,0,Nobody,Nobody,Nobody,No,No
+bot_27,10,0,15,10,10,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_28,20,10,20,10,16,0,0,0,Nobody,Nobody,Nobody,No,No
+bot_29,10,0,15,10,10,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_30,10,0,20,10,10,0,3,3,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_31,15,0,20,10,10,1,3,2,Lowest contributor,Lowest contributor,Lowest contributor,No,Yes
+bot_32,10,0,20,10,10,0,3,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_33,15,10,18,15,15,0,3,3,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_34,10,0,20,10,10,1,1,1,Lowest contributor,Lowest contributor,Lowest contributor,No,No
+bot_35,15,0,20,10,10,3,3,3,Lowest contributor,Lowest contributor,Lowest contributor,No,Yes
+bot_36,10,5,16,20,10,0,2,0,Nobody,Lowest contributor,Nobody,No,Yes
+bot_37,10,5,15,10,10,0,2,2,Nobody,Below-average contributors,Below-average contributors,No,Yes
+bot_38,10,5,15,10,5,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_39,5,0,20,10,0,0,1,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_40,10,5,20,10,10,0,2,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_41,15,5,20,10,10,0,4,3,Nobody,Below-average contributors,Below-average contributors,No,Yes
+bot_42,15,0,18,18,15,0,3,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_43,20,0,20,10,20,0,0,0,Nobody,Nobody,Nobody,No,No
+bot_44,0,0,10,10,10,0,2,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_45,15,10,20,15,15,0,3,2,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_46,0,0,10,10,10,2,3,2,Lowest contributor,Lowest contributor,Lowest contributor,No,Yes
+bot_47,15,10,20,15,10,0,2,2,Nobody,Lowest contributor,Lowest contributor,No,No
+bot_48,15,10,18,14,10,0,2,1,Nobody,Lowest contributor,Lowest contributor,No,Yes
+bot_49,10,5,15,10,10,0,0,0,Nobody,Nobody,Nobody,No,Yes
+bot_50,15,0,20,10,15,0,3,2,Nobody,Lowest contributor,Lowest contributor,No,Yes

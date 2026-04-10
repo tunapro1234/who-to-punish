@@ -1,0 +1,1643 @@
+[
+  {
+    "agent": "bot_1",
+    "url": "http://localhost:8000/InitializeParticipant/1bswr312",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_2",
+    "url": "http://localhost:8000/InitializeParticipant/lbw14zon",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 10,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_target_cooperate' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_3",
+    "url": "http://localhost:8000/InitializeParticipant/btxwrt2z",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 1,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "bot_4",
+    "url": "http://localhost:8000/InitializeParticipant/v1sc208u",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_5",
+    "url": "http://localhost:8000/InitializeParticipant/ng2tpdn1",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_punish_low' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_6",
+    "url": "http://localhost:8000/InitializeParticipant/ttlgaijx",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_cooperate' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_7",
+    "url": "http://localhost:8000/InitializeParticipant/vsn88ms6",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Lowest contributor",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "bot_8",
+    "url": "http://localhost:8000/InitializeParticipant/pbwtgroi",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_9",
+    "url": "http://localhost:8000/InitializeParticipant/ct8r35n4",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 12
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_punish_high' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_10",
+    "url": "http://localhost:8000/InitializeParticipant/gxnb1ec5",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_11",
+    "url": "http://localhost:8000/InitializeParticipant/a7tindbk",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 10,
+          "contrib_unrestricted": 15
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 0,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Nobody",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "bot_12",
+    "url": "http://localhost:8000/InitializeParticipant/8ubmgqsw",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 0,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Nobody",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "bot_13",
+    "url": "http://localhost:8000/InitializeParticipant/ukke9zyq",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 15,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_target_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_14",
+    "url": "http://localhost:8000/InitializeParticipant/bbsr4wpx",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_target_freerider' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_15",
+    "url": "http://localhost:8000/InitializeParticipant/dv7c91bh",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 15,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 10,
+          "contrib_unrestricted": 15
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_16",
+    "url": "http://localhost:8000/InitializeParticipant/svr60b08",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 0,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Nobody",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "bot_17",
+    "url": "http://localhost:8000/InitializeParticipant/2u46hu9n",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 15,
+          "contrib_punish_high": 5,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_18",
+    "url": "http://localhost:8000/InitializeParticipant/n58u1eut",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 15
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 15,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_19",
+    "url": "http://localhost:8000/InitializeParticipant/us47k07f",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_target_cooperate' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_20",
+    "url": "http://localhost:8000/InitializeParticipant/q9lkgugt",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_target_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_21",
+    "url": "http://localhost:8000/InitializeParticipant/oam5il2c",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_22",
+    "url": "http://localhost:8000/InitializeParticipant/rg6l84nm",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_23",
+    "url": "http://localhost:8000/InitializeParticipant/32cj9rdd",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_24",
+    "url": "http://localhost:8000/InitializeParticipant/lzuir3ad",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 15,
+          "contrib_punish_high": 5,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_freerider' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_25",
+    "url": "http://localhost:8000/InitializeParticipant/9psxcsip",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_26",
+    "url": "http://localhost:8000/InitializeParticipant/iplupidc",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 10,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_27",
+    "url": "http://localhost:8000/InitializeParticipant/9n6tnmel",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_punish_high' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_28",
+    "url": "http://localhost:8000/InitializeParticipant/v7bxnn7p",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_29",
+    "url": "http://localhost:8000/InitializeParticipant/dttnu434",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_30",
+    "url": "http://localhost:8000/InitializeParticipant/bfxfuim2",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 15,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 5,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_target_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_31",
+    "url": "http://localhost:8000/InitializeParticipant/74a5aewg",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_punish_high' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_32",
+    "url": "http://localhost:8000/InitializeParticipant/kvc9had1",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 15
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_punish_high' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_33",
+    "url": "http://localhost:8000/InitializeParticipant/f0x8nzbm",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 9
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_34",
+    "url": "http://localhost:8000/InitializeParticipant/idksu8km",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_35",
+    "url": "http://localhost:8000/InitializeParticipant/2ang6gad",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_36",
+    "url": "http://localhost:8000/InitializeParticipant/aeiatd78",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_37",
+    "url": "http://localhost:8000/InitializeParticipant/ssews9jt",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 15,
+          "contrib_punish_high": 5,
+          "contrib_unrestricted": 15
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_freerider' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_38",
+    "url": "http://localhost:8000/InitializeParticipant/us2mg70x",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_punish_high' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_39",
+    "url": "http://localhost:8000/InitializeParticipant/giyxbcng",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_target_freerider' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_40",
+    "url": "http://localhost:8000/InitializeParticipant/e4mpyio7",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 3,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Lowest contributor",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "bot_41",
+    "url": "http://localhost:8000/InitializeParticipant/5j5vev7y",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 15
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_target_freerider' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_42",
+    "url": "http://localhost:8000/InitializeParticipant/mvrbp06u",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_punish_high' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_43",
+    "url": "http://localhost:8000/InitializeParticipant/v893bs67",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_punish_high' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_44",
+    "url": "http://localhost:8000/InitializeParticipant/tkburur8",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 15,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 15
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_45",
+    "url": "http://localhost:8000/InitializeParticipant/nv9itq9k",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 15
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_punish_high' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_46",
+    "url": "http://localhost:8000/InitializeParticipant/88ymg18z",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 15,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 10,
+          "contrib_unrestricted": 15
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_cooperate' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_47",
+    "url": "http://localhost:8000/InitializeParticipant/jkhgcu6v",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_freerider' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_48",
+    "url": "http://localhost:8000/InitializeParticipant/xr1qqdms",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'contrib_unrestricted' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Regimes",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  },
+  {
+    "agent": "bot_49",
+    "url": "http://localhost:8000/InitializeParticipant/5bgiq621",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 0,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Nobody",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "bot_50",
+    "url": "http://localhost:8000/InitializeParticipant/xulvuzjg",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 20
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 20,
+          "contrib_punish_low": 20,
+          "contrib_punish_high": 20,
+          "contrib_unrestricted": 20
+        }
+      },
+      {
+        "page": "FIELD_FAILURE",
+        "error": "Failed on field 'punish_amount_mixed' after 8 attempts. Last response: empty"
+      },
+      {
+        "page": "Punishment",
+        "error": "Could not produce valid answers"
+      }
+    ]
+  }
+]

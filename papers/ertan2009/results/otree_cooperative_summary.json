@@ -1,0 +1,47 @@
+{
+  "label": "skewed_agr4.5_neu1.5",
+  "n": 50,
+  "baseline_mean": 16.54,
+  "baseline_std": 4.717358306060194,
+  "vote_punish_low": 0.46,
+  "vote_punish_high": 0.0,
+  "regimes": {
+    "no_punishment": {
+      "mean": 17.166666666666668,
+      "std": 4.086000770784383
+    },
+    "punish_low_only": {
+      "mean": 19.333333333333332,
+      "std": 1.728729518208802
+    },
+    "punish_high_only": {
+      "mean": 9.666666666666666,
+      "std": 8.703282509305417
+    },
+    "unrestricted": {
+      "mean": 14.8,
+      "std": 4.6786381749835915
+    }
+  },
+  "punishment": {
+    "all_cooperate": {
+      "mean": 0.0,
+      "nonzero": 0,
+      "n": 50
+    },
+    "mixed": {
+      "mean": 0.42857142857142855,
+      "nonzero": 2,
+      "n": 50
+    },
+    "one_freerider": {
+      "mean": 0.8571428571428571,
+      "nonzero": 3,
+      "n": 50
+    }
+  },
+  "targets": {
+    "Nobody": 16,
+    "Lowest contributor": 5
+  }
+}

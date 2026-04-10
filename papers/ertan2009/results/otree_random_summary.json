@@ -1,0 +1,48 @@
+{
+  "label": "random_population",
+  "n": 50,
+  "baseline_mean": 12.26,
+  "baseline_std": 4.308558165951546,
+  "vote_punish_low": 0.8,
+  "vote_punish_high": 0.0,
+  "regimes": {
+    "no_punishment": {
+      "mean": 12.4,
+      "std": 5.514359733033938
+    },
+    "punish_low_only": {
+      "mean": 17.78,
+      "std": 2.950544743892945
+    },
+    "punish_high_only": {
+      "mean": 3.56,
+      "std": 5.111651356639724
+    },
+    "unrestricted": {
+      "mean": 11.68,
+      "std": 3.760373407424495
+    }
+  },
+  "punishment": {
+    "all_cooperate": {
+      "mean": 0.14,
+      "nonzero": 4,
+      "n": 50
+    },
+    "mixed": {
+      "mean": 1.4,
+      "nonzero": 41,
+      "n": 50
+    },
+    "one_freerider": {
+      "mean": 1.9,
+      "nonzero": 44,
+      "n": 50
+    }
+  },
+  "targets": {
+    "Nobody": 60,
+    "Below-average contributors": 13,
+    "Lowest contributor": 77
+  }
+}
