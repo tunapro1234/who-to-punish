@@ -75,8 +75,8 @@ class OTreeClient:
         return _parse_page(resp.text, resp.url)
 
     def wait_for_page(self, page: PageData,
-                      timeout: float = 300, poll_interval: float = 2.0) -> PageData:
-        """Poll a WaitPage until oTree advances it."""
+                      timeout: float = 1800, poll_interval: float = 2.0) -> PageData:
+        """Poll a WaitPage until oTree advances it. Default 30 min timeout (allows human participants)."""
         deadline = time.time() + timeout
         while time.time() < deadline:
             time.sleep(poll_interval)

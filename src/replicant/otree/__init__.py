@@ -30,6 +30,7 @@ from .parser import parse, OTreeApp, FieldDef, PageDef
 from .translator import translate
 from .client import OTreeClient, PageData, FormField
 from .bot import LLMBot, FormController, run_bots
+from .hybrid import HybridSession
 
 from ..experiments import BehavioralExperiment
 from ..personalities import PersonalityFactory, build_description, POPULATION_NORMS
@@ -176,7 +177,7 @@ class OTreeExperiment:
 
 
 __all__ = [
-    "OTreeSession", "OTreeExperiment",
+    "OTreeSession", "OTreeExperiment", "HybridSession",
     "parse", "translate",
     "OTreeApp", "FieldDef", "PageDef",
     "OTreeClient", "PageData", "FormField",

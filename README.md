@@ -140,7 +140,29 @@ session = OTreeSession("http://localhost:8000", model="stepfun/step-3.5-flash")
 results = session.run("ertan2009", n_bots=5, big5=True)
 ```
 
-The oTree server can also be used by humans alongside bots — useful for hybrid experiments.
+### Human-LLM Hybrid Sessions
+
+You can mix LLM bots with real human participants in the same session. oTree handles synchronization — bots wait at WaitPages until humans submit their decisions.
+
+```python
+from replicant.otree import HybridSession
+
+session = HybridSession("http://localhost:8000", model="stepfun/step-3.5-flash")
+
+# Create session with 6 participants
+urls = session.create("ertan2009", n_participants=6)
+
+# Split: 3 humans, 3 bots
+human_urls, bot_urls = session.split(n_humans=3)
+
+# Show human links (give these to your participants)
+session.print_human_links(human_urls)
+
+# Run bots — they'll wait at WaitPages for humans
+results = session.run_bots(bot_urls, big5=True)
+```
+
+See `examples/hybrid_session.py` for a complete example.
 
 ## BFI-2 Personality System
 
