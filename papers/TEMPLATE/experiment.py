@@ -1,35 +1,19 @@
 """
 TEMPLATE — experiment definition.
 
-Define the build() function which returns a BehavioralExperiment.
-You can either:
-  (a) Use a reusable template from replicant.experiments.templates
-  (b) Build your own EDSL Survey from scratch
+A paper replication points to an oTree app and provides metadata.
+The actual experiment lives at tests/otree_server/<your_paper_name>/.
 """
 
-from replicant import BehavioralExperiment
+import os
 
-# Option A: use a reusable template
-# from replicant.experiments.templates.public_goods import contribution_survey
+# The oTree session config name (defined in tests/otree_server/settings.py)
+OTREE_SESSION_CONFIG = "your_paper_name"  # CHANGE ME
 
-# Option B: build your own from scratch
-# from edsl import QuestionNumerical, QuestionMultipleChoice, Survey, Scenario
+# Default oTree server URL
+DEFAULT_SERVER = "http://localhost:8000"
 
-from .config import ENDOWMENT, GROUP_SIZE  # add other params as needed
-
-
-def build(model: str = "stepfun/step-3.5-flash") -> BehavioralExperiment:
-    """Build the experiment from paper parameters."""
-    exp = BehavioralExperiment("template", model=model)
-
-    # Example: a single-question survey
-    # from edsl import QuestionNumerical, Survey
-    # q = QuestionNumerical(
-    #     question_name="offer",
-    #     question_text=f"You have {ENDOWMENT} tokens. How many do you offer?",
-    #     min_value=0,
-    #     max_value=ENDOWMENT,
-    # )
-    # exp.add_part("offer", Survey(questions=[q]), description="Initial offer")
-
-    return exp
+# Path to the oTree app source (for documentation)
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_PROJECT_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
+OTREE_APP_PATH = os.path.join(_PROJECT_ROOT, "tests", "otree_server", OTREE_SESSION_CONFIG)

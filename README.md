@@ -4,20 +4,19 @@
 [![Python](https://img.shields.io/pypi/pyversions/pyreplicant.svg)](https://pypi.org/project/pyreplicant/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-LLM-based replication framework for behavioral economics experiments.
+Connect LLM agents to oTree experiments with Big Five personalities.
 
 > Note: install as `pyreplicant`, import as `replicant` (like `pillow`/`PIL`).
 
-Run classic econ experiments with LLM agents instead of humans. Validate that the personalities you assign actually stick. Compare your results to published findings. Plug into [oTree](https://www.otree.org/) to use real experiment platforms.
+`replicant` lets you run real [oTree](https://www.otree.org/) experiments using LLM agents as participants — alone, or mixed with humans. Each agent gets a personality drawn from validated psychometric distributions (BFI-2-Expanded, Soto & John 2017), and the framework handles all the HTTP plumbing: form parsing, response validation, retries, and synchronization.
 
 ## What is this?
 
-`replicant` is a Python toolkit for using large language models as simulated participants in behavioral economics experiments. It builds on [EDSL](https://github.com/expectedparrot/edsl) and provides:
+A Python toolkit with three main pieces:
 
-- **BFI-2-Expanded personality induction** with cross-instrument validation (Mini-IPIP)
-- **Multi-part experiment runner** with automatic retry and statistical analysis
-- **oTree integration** — bots that connect to a real oTree server as participants
-- **Paper replication tools** — compare simulated results to published findings
+- **BFI-2-Expanded personality induction** with cross-instrument validation (r = 0.91 vs Mini-IPIP)
+- **oTree LLM bots** that connect to a real oTree server as HTTP clients
+- **Paper replication tools** — copy a template, point to your oTree app, run
 
 The first paper replicated is **Ertan, Page & Putterman (2009)** — *"Who to Punish? Individual Decisions and Majority Rule in Mitigating the Free Rider Problem"* (European Economic Review, 53(5), 495-511).
 
@@ -30,38 +29,35 @@ Two reasons. First, replication: the goal is to reproduce human behavioral findi
 ```
 src/
 └── replicant/                            # The framework (installable package)
-    ├── experiments/
-    │   ├── runner.py                     # BehavioralExperiment
-    │   ├── comparison.py                 # PaperComparison
-    │   └── templates/
-    │       └── public_goods.py           # Reusable VCM surveys
     ├── personalities/
     │   ├── factory.py                    # PersonalityFactory + sentence bank
     │   └── validation.py                 # Mini-IPIP cross-instrument testing
     ├── otree/
     │   ├── client.py                     # HTTP client for oTree server
     │   ├── bot.py                        # LLMBot + FormController
+    │   ├── hybrid.py                     # HybridSession (humans + bots)
     │   ├── parser.py                     # Parse oTree app source
-    │   └── translator.py                 # oTree → EDSL converter
-    └── analysis/                         # (reserved for future generic tools)
+    │   └── translator.py                 # oTree app introspection
+    ├── analysis/
+    │   ├── cost.py                       # Cost estimation per model
+    │   ├── stats.py                      # Mann-Whitney, chi-square, etc.
+    │   └── comparison.py                 # PaperComparison helper
+    ├── cli.py                            # Generic run_paper() helper
+    └── preflight.py                      # Pre-flight checks (API key, model)
 
 papers/                                   # Paper replications (each self-contained)
+├── TEMPLATE/                             # Copy this to start a new paper
 └── ertan2009/
     ├── config.py                         # Game parameters + paper findings
-    ├── experiment.py                     # Wires template to config
+    ├── experiment.py                     # Points to oTree app
     ├── analyze.py                        # Paper-specific analysis
-    ├── run.py                            # CLI entry point
-    ├── compare.py                        # Default vs personality comparison
-    ├── figures.py                        # Plot generation
-    ├── fig_personality.py                # Personality scatter plots
-    ├── results/                          # CSV data, JSON summaries
-    │   ├── default_*.csv
-    │   ├── big5_random_*.csv
-    │   └── *_summary.json
-    └── replicated/                       # The research paper output
-        ├── paper.tex
-        ├── paper.pdf                     # 16 pages
-        └── figures/                      # 5 figures
+    ├── run.py                            # CLI entry point (~20 lines)
+    ├── results/                          # JSON/CSV data
+    ├── replicated/                       # The research paper output
+    │   ├── paper.tex
+    │   ├── paper.pdf
+    │   └── figures/
+    └── legacy/                           # Pre-oTree EDSL pipeline scripts
 
 tests/
 └── otree_server/                         # Real oTree server (Docker)
@@ -96,85 +92,68 @@ pip install "pyreplicant[analysis]"
 export OPEN_ROUTER_API_KEY="your-key-here"
 ```
 
-### Quick example
+### Run a paper replication
+
+```bash
+# 1. Start the oTree server
+docker compose up -d
+
+# 2. Run with default agents
+python -m papers.ertan2009.run -n 10
+
+# With Big Five personalities sampled from population norms
+python -m papers.ertan2009.run -n 10 --random-personalities --seed 42
+
+# With a skewed population (all disagreeable)
+python -m papers.ertan2009.run -n 10 --skew-agreeableness 1.5
+
+# Different model
+python -m papers.ertan2009.run -n 10 --model deepseek/deepseek-v3.2
+```
+
+### Quick example: build a personality
 
 ```python
-from replicant import build_personality, BehavioralExperiment, PersonalityFactory
-from replicant.experiments.templates.public_goods import contribution_survey
+from replicant import build_personality, sample_personalities
 
-# Create a custom personality
+# A single agent with explicit OCEAN scores
 desc = build_personality(extraversion=4.5, agreeableness=1.5, neuroticism=4.0)
 print(desc)
 
-# Run a public goods game with sampled population
-factory = PersonalityFactory()
-agents = factory.create_random_population(n=20, seed=42)
+# A population sampled from US adult norms
+personalities = sample_personalities(n=20, seed=42)
 
-exp = BehavioralExperiment("my_test", model="stepfun/step-3.5-flash")
-exp.add_part("baseline", contribution_survey(endowment=20, group_size=5, mpcr=0.4))
-results = exp.run(agents)
-```
-
-### Run a paper replication
-
-From the project root:
-
-```bash
-# Default: 50 agents, no personality
-python -m papers.ertan2009.run -n 50
-
-# With Big Five personalities sampled from population norms
-python -m papers.ertan2009.run -n 50 --random-personalities --seed 42
-
-# With named profiles (5 archetypes)
-python -m papers.ertan2009.run -n 25 --big5
-
-# Different model
-python -m papers.ertan2009.run -n 50 --model deepseek/deepseek-v3.2
+# A skewed population (all disagreeable)
+disagreeable = sample_personalities(n=20, agreeableness=1.5)
 ```
 
 ### Validate personality induction
 
 ```python
-from replicant.personalities.validation import run_continuous_validation
+from replicant.personalities import run_continuous_validation
 
 results = run_continuous_validation(n=20, model="stepfun/step-3.5-flash")
 # Reports Pearson r, R², MAE, bias per Big Five domain
+# Pooled r ≈ 0.91 for Step 3.5 Flash
 ```
 
-## Two Pipelines
+## How it works
 
-### Pipeline 1: EDSL (single-shot)
-
-For fast, structured experiments without group interaction.
-
-```python
-from replicant import BehavioralExperiment, PersonalityFactory
-from replicant.experiments.templates.public_goods import contribution_survey
-
-factory = PersonalityFactory()
-agents = factory.create_random_population(n=50, seed=42)
-
-exp = BehavioralExperiment("my_experiment", model="stepfun/step-3.5-flash")
-exp.add_part("baseline", contribution_survey(20, 5, 0.4))
-results = exp.run(agents)
+```
+oTree server          replicant LLM bot
+─────────────         ──────────────────
+HTML page  ────────►  HTML parser
+                      ▼
+                      FormController
+                      (validates fields)
+                      ▼
+                      LLM (with personality)
+                      ▼
+                      JSON answer
+HTML page  ◄────────  oTree form POST
 ```
 
-### Pipeline 2: oTree (multi-round, group-aware)
-
-For realistic experiments with rounds, groups, and payoffs. LLM bots connect to a running oTree server as HTTP clients — same interface humans would use through a browser.
-
-```bash
-# Start the oTree server
-docker compose up -d
-```
-
-```python
-from replicant.otree import OTreeSession
-
-session = OTreeSession("http://localhost:8000", model="stepfun/step-3.5-flash")
-results = session.run("ertan2009", n_bots=5, big5=True)
-```
+The bot reads each oTree page, extracts form fields, builds a prompt that includes the agent's personality and the page context, calls the LLM, validates the response against the field constraints, and submits. From oTree's perspective, the bot is indistinguishable from a human participant in a browser.
 
 ### Human-LLM Hybrid Sessions
 
@@ -198,49 +177,61 @@ session.print_human_links(human_urls)
 results = session.run_bots(bot_urls, big5=True)
 ```
 
-See `examples/hybrid_session.py` for a complete example.
+See `examples/06_hybrid_humans_bots.py` for a complete example.
 
 ## BFI-2 Personality System
 
 `replicant` uses the **BFI-2-Expanded** format (Soto & John, 2017) — instead of giving LLMs numeric trait scores (which don't reliably influence behavior), it builds rich personality descriptions from a 7-level sentence bank.
 
 ```python
-from replicant import PersonalityFactory
+from replicant import build_personality, sample_personalities
 
-factory = PersonalityFactory()
-
-# Sample from US adult population norms
-agents = factory.create_random_population(n=50)
-
-# Skewed population (e.g., all disagreeable)
-agents = factory.create_random_population(
-    n=50, mean_overrides={"agreeableness": 1.5}
+# Direct OCEAN scores (1-5 scale)
+desc = build_personality(
+    extraversion=4.5,
+    agreeableness=1.5,
+    conscientiousness=3.0,
+    neuroticism=4.0,
+    openness=3.5,
 )
 
-# Named archetypes
-agents = factory.create_profile("cooperative", n=10)
-agents = factory.create_profile("selfish", n=10)
+# Sample from US adult population norms
+personalities = sample_personalities(n=50, seed=42)
+
+# Skewed population (e.g., all disagreeable)
+personalities = sample_personalities(n=50, agreeableness=1.5)
+
+# Multiple skews
+personalities = sample_personalities(
+    n=50,
+    agreeableness=1.5,
+    neuroticism=4.5,
+)
 ```
 
 ### Validation
 
-We test that personality induction actually works using **cross-instrument validation**: assign with BFI-2-Expanded sentences, measure with the Mini-IPIP 20-item Likert scale (different wording so the model can't parrot the assignment).
+We test that personality induction actually works using **cross-instrument validation**: assign with BFI-2-Expanded sentences, measure with the Mini-IPIP 20-item Likert scale (different wording so the model can't parrot the assignment). For Step 3.5 Flash:
 
-| Profile | Match | r |
-|---------|-------|---|
-| Cooperative | 5/5 | — |
-| Selfish | 4/5 | — |
-| Leader | 5/5 | — |
-| Anxious | 5/5 | — |
-| Average | 3/5 | — |
-| **Overall** | **22/25 (88%)** | **see continuous validation** |
+| Domain | Pearson r | R² | MAE | Bias |
+|--------|-----------|-----|-----|------|
+| Extraversion | 0.95 | 0.91 | 0.55 | -0.03 |
+| Agreeableness | 0.80 | 0.64 | 0.74 | +0.74 |
+| Conscientiousness | 0.91 | 0.83 | 0.55 | +0.44 |
+| Neuroticism | 0.94 | 0.88 | 0.83 | -0.69 |
+| Openness | 0.93 | 0.86 | 0.67 | +0.66 |
+| **Pooled** | **0.91** | **0.83** | 0.67 | — |
+
+The agreeableness and neuroticism biases reflect RLHF training (models drift toward warmth and away from negative affect) — see the paper for details.
 
 ## Adding a New Paper
 
-1. Create `src/papers/<paper_name>/config.py` with game parameters and known findings
-2. Create `src/papers/<paper_name>/experiment.py` wiring a template to the config
-3. Create `src/papers/<paper_name>/run.py` as a CLI entry point
-4. (Optional) Add an oTree app under `tests/otree_server/<paper_name>/`
+1. Copy `papers/TEMPLATE/` to `papers/<your_paper>/`
+2. Create your oTree app at `tests/otree_server/<your_paper>/`
+3. Register the session config in `tests/otree_server/settings.py`
+4. Edit `papers/<your_paper>/config.py` with the paper's known findings
+5. Edit `analyze.py` to extract the metrics that matter
+6. Run: `python -m papers.<your_paper>.run -n 10 --random-personalities`
 
 ## Known Models
 

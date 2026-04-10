@@ -62,10 +62,13 @@ def is_reasoning(model: str) -> bool:
     return any(rm in model for rm in REASONING_MODELS)
 
 
-def get_pricing(model: str) -> tuple[float, float]:
+def get_pricing(model: str, fetch: bool = True) -> tuple[float, float]:
     """
     Return (input, output) price per million tokens for a model.
-    Returns (0, 0) for unknown models with a warning.
+
+    Tries the local registry first. If not found and fetch=True,
+    queries the OpenRouter models API and caches the result.
+    Returns (0, 0) if the model doesn't exist anywhere.
     """
     if model in MODEL_PRICING:
         return MODEL_PRICING[model]
@@ -73,7 +76,45 @@ def get_pricing(model: str) -> tuple[float, float]:
     base = model.replace(":free", "")
     if base in MODEL_PRICING:
         return MODEL_PRICING[base]
+
+    if fetch:
+        fetched = _fetch_from_openrouter(model)
+        if fetched is not None:
+            MODEL_PRICING[model] = fetched
+            return fetched
+
     return (0.0, 0.0)
+
+
+def _fetch_from_openrouter(model: str) -> tuple[float, float] | None:
+    """
+    Fetch a model's pricing from OpenRouter's models API.
+    Returns (input_per_M, output_per_M) or None if not found.
+    """
+    try:
+        import requests
+        r = requests.get("https://openrouter.ai/api/v1/models", timeout=10)
+        r.raise_for_status()
+        for m in r.json().get("data", []):
+            if m["id"] == model:
+                p = m.get("pricing", {})
+                in_per_token = float(p.get("prompt", 0))
+                out_per_token = float(p.get("completion", 0))
+                # Convert per-token to per-million
+                return (in_per_token * 1e6, out_per_token * 1e6)
+    except Exception:
+        pass
+    return None
+
+
+def model_exists(model: str) -> bool:
+    """
+    Check whether a model exists on OpenRouter (or in our local registry).
+    Network-dependent: makes an API call if model not in local registry.
+    """
+    if model in MODEL_PRICING or model.replace(":free", "") in MODEL_PRICING:
+        return True
+    return _fetch_from_openrouter(model) is not None
 
 
 def estimate_cost(

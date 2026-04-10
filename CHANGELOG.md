@@ -5,22 +5,40 @@ All notable changes to `replicant` will be documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.3.0] — 2026-04-10
+
+**BREAKING:** Dropped the EDSL-based experiment pipeline. `replicant` is now
+exclusively an LLM-to-oTree connector. New papers should use the oTree pipeline.
+
+### Removed
+- `replicant.experiments` package (BehavioralExperiment, templates)
+- `OTreeExperiment` standalone class (was based on EDSL)
 
 ### Added
-- `replicant.analysis.cost` — pre-flight cost estimation for experiments
-- `replicant.analysis.stats` — generic statistical helpers (Mann-Whitney U,
-  chi-square, Cohen's d, formatted comparison tables)
-- `BehavioralExperiment.estimate_calls()` — predict total API calls
-- `BehavioralExperiment.run()` now prints a cost estimate before starting
+- `replicant.cli.run_paper()` — generic CLI helper, paper run.py is now ~20 lines
+- `replicant.preflight` — pre-flight checks for API key, model existence
+- `replicant.analysis.cost` — cost estimation, auto-fetches unknown models from
+  OpenRouter and caches their pricing
+- `replicant.analysis.stats` — Mann-Whitney U, chi-square, Cohen's d, formatted
+  comparison tables (extracted from per-paper compare.py scripts)
+- `replicant.analysis.comparison` — `PaperComparison` class (moved here)
+- `replicant.personalities.run_continuous_validation()` — Pearson r, R², MAE
+  metrics for personality induction
+- `replicant.otree.HybridSession` — mix LLM bots with human participants
+- Top-level helpers: `build_personality()`, `sample_personalities()`
+- Smoke tests in `tests/unit/` (41 tests)
+- `papers/TEMPLATE/` scaffold for new paper replications
+- `examples/` directory with 7 runnable scripts
 - `CHANGELOG.md`
 
 ### Changed
-- `replicant` is now pip-installable (`pip install -e .`) — no more
-  `sys.path.insert` boilerplate in paper files or examples
-- `papers/ertan2009/compare.py` refactored to use `replicant.analysis.stats`
-  helpers instead of duplicating Mann-Whitney / chi-square code
-- Removed empty `src/__init__.py` (was making `src` an unintended package)
+- `pyreplicant` is now installable from PyPI: `pip install pyreplicant`
+- `papers/` moved to project root (out of `src/`); each paper self-contained
+  with `results/` and `replicated/` subdirectories
+- `papers/ertan2009/run.py` rewritten to use the oTree pipeline + generic CLI
+- All `sys.path.insert` boilerplate removed (`replicant` is properly installable)
+- Old EDSL-based scripts moved to `papers/ertan2009/legacy/` for reproducibility
+- README rewritten to reflect single-pipeline architecture
 
 ## [0.2.0] — 2026-04-09
 

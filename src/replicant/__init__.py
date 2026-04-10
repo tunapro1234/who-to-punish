@@ -1,40 +1,31 @@
 """
-replicant — LLM-based replication framework for behavioral economics experiments.
-
-Provides:
-- BehavioralExperiment: multi-part EDSL experiment runner
-- PersonalityFactory: BFI-2-Expanded personality generator
-- PaperComparison: simulation vs published results comparison
-- oTree integration: LLM bots that play through real oTree experiments
-
-Two pipelines:
-  1. EDSL pipeline (single-shot, fast)
-  2. oTree pipeline (multi-round, group-aware)
+replicant — connect LLMs to oTree experiments with Big Five personalities.
 
 Usage:
-    from replicant import BehavioralExperiment, PersonalityFactory
+    from replicant.otree import HybridSession
+    from replicant import sample_personalities, build_personality
 
-    factory = PersonalityFactory()
-    agents = factory.create_random_population(n=50)
+    session = HybridSession("http://localhost:8000")
+    urls = session.create("ertan2009", n_participants=5)
 
-    exp = BehavioralExperiment("my_experiment", model="stepfun/step-3.5-flash")
-    exp.add_part("baseline", contribution_survey(20, 5, 0.4))
-    results = exp.run(agents)
+    personalities = sample_personalities(n=5, seed=42)
+    results = session.run_bots(urls, personalities=personalities)
+
+The personality system uses BFI-2-Expanded format (Soto & John, 2017),
+validated at r=0.91 against the Mini-IPIP cross-instrument benchmark.
 """
 
-from .experiments.runner import BehavioralExperiment
-from .experiments.comparison import PaperComparison
 from .personalities.factory import (
     PersonalityFactory,
     build_personality,
     sample_personalities,
 )
+from .analysis.comparison import PaperComparison
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 __all__ = [
-    "BehavioralExperiment",
-    "PaperComparison",
     "PersonalityFactory",
     "build_personality",
     "sample_personalities",
+    "PaperComparison",
 ]
