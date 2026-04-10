@@ -1,6 +1,12 @@
 # replicant
 
+[![PyPI](https://img.shields.io/pypi/v/pyreplicant.svg)](https://pypi.org/project/pyreplicant/)
+[![Python](https://img.shields.io/pypi/pyversions/pyreplicant.svg)](https://pypi.org/project/pyreplicant/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 LLM-based replication framework for behavioral economics experiments.
+
+> Note: install as `pyreplicant`, import as `replicant` (like `pillow`/`PIL`).
 
 Run classic econ experiments with LLM agents instead of humans. Validate that the personalities you assign actually stick. Compare your results to published findings. Plug into [oTree](https://www.otree.org/) to use real experiment platforms.
 
@@ -66,17 +72,47 @@ tests/
 
 ## Quick Start
 
+### Install
+
+```bash
+pip install pyreplicant
+```
+
+For analysis features (figures, statistics):
+
+```bash
+pip install "pyreplicant[analysis]"
+```
+
 ### Prerequisites
 
 - Python 3.10+
 - An [OpenRouter](https://openrouter.ai) API key (for LLM access)
-- [EDSL](https://github.com/expectedparrot/edsl) (`pip install edsl`)
 - (Optional) Docker for the oTree server
 
 ### Setup
 
 ```bash
 export OPEN_ROUTER_API_KEY="your-key-here"
+```
+
+### Quick example
+
+```python
+from replicant import build_personality, BehavioralExperiment, PersonalityFactory
+from replicant.experiments.templates.public_goods import contribution_survey
+
+# Create a custom personality
+desc = build_personality(extraversion=4.5, agreeableness=1.5, neuroticism=4.0)
+print(desc)
+
+# Run a public goods game with sampled population
+factory = PersonalityFactory()
+agents = factory.create_random_population(n=20, seed=42)
+
+exp = BehavioralExperiment("my_test", model="stepfun/step-3.5-flash")
+exp.add_part("baseline", contribution_survey(endowment=20, group_size=5, mpcr=0.4))
+results = exp.run(agents)
 ```
 
 ### Run a paper replication

@@ -1,8 +1,10 @@
 [project]
-name = "replicant"
+name = "pyreplicant"
 version = "0.2.0"
 description = "LLM-based replication framework for behavioral economics experiments"
+readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
 authors = [
     {name = "Sabri Tuna Çakar"},
 ]
@@ -14,6 +16,19 @@ keywords = [
     "experimental economics",
     "oTree",
     "Homo Silicus",
+    "research",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 dependencies = [
     "edsl>=1.0",
@@ -24,6 +39,13 @@ dependencies = [
 [project.optional-dependencies]
 analysis = ["pandas>=2.0", "matplotlib>=3.7", "scipy>=1.10"]
 otree = ["otree>=6.0"]
+all = ["pandas>=2.0", "matplotlib>=3.7", "scipy>=1.10", "otree>=6.0"]
+
+[project.urls]
+Homepage = "https://github.com/tunapro1234/replicant"
+Repository = "https://github.com/tunapro1234/replicant"
+Issues = "https://github.com/tunapro1234/replicant/issues"
+Changelog = "https://github.com/tunapro1234/replicant/blob/main/CHANGELOG.md"
 
 [project.scripts]
 replicant-otree = "replicant.otree.__main__:main"
@@ -33,5 +55,5 @@ where = ["src"]
 include = ["replicant*"]
 
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
