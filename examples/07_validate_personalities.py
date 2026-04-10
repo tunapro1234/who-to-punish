@@ -15,9 +15,6 @@ Two validation modes:
   - run_continuous_validation: Pearson r, R², MAE per Big Five domain
 """
 
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
-
 from replicant.personalities import (
     run_level_validation,
     run_continuous_validation,

@@ -1,15 +1,14 @@
 """Generate personality breakdown figure."""
-import os, sys, random
+import os, random
 import pandas as pd
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-_HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(_HERE, "..", "..", "src"))
 from replicant.personalities import POPULATION_NORMS, DOMAINS
 
+_HERE = os.path.dirname(os.path.abspath(__file__))
 RESULTS_DIR = os.path.join(_HERE, "results")
 FIGURES_DIR = os.path.join(_HERE, "replicated", "figures")
 os.makedirs(FIGURES_DIR, exist_ok=True)

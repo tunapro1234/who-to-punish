@@ -15,10 +15,6 @@ personality archetypes:
 Useful for comparing how distinct personality types affect behavior.
 """
 
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 from replicant import PersonalityFactory
 from replicant.personalities import PROFILES
 

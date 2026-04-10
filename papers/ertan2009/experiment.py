@@ -4,14 +4,6 @@ Ertan, Page & Putterman (2009) — experiment definition.
 Wires the public goods game template to the paper-specific parameters.
 """
 
-import os
-import sys
-
-# Bootstrap path for standalone import
-_SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "src"))
-if _SRC not in sys.path:
-    sys.path.insert(0, _SRC)
-
 from replicant import BehavioralExperiment
 from replicant.experiments.templates.public_goods import (
     contribution_survey,

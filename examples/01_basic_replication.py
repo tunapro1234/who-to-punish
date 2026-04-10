@@ -9,10 +9,9 @@ just LLM agents playing the Ertan 2009 public goods game.
 """
 
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # for `papers`
 
-from replicant import BehavioralExperiment, PersonalityFactory
+from replicant import PersonalityFactory
 from papers.ertan2009 import build, analyze
 
 

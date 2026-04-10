@@ -10,10 +10,6 @@ build_personality() to specify all five Big Five scores directly.
 Each trait is on a 1-5 scale (3.0 = average, 5.0 = high, 1.0 = low).
 """
 
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 from replicant import build_personality
 from replicant.personalities import sample_personalities
 

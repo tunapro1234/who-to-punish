@@ -105,6 +105,22 @@ class BehavioralExperiment:
 
         return df
 
+    def estimate_calls(self, agents) -> int:
+        """
+        Estimate total number of API calls for this experiment.
+        Each part contributes (n_agents * n_scenarios * n_questions) calls.
+        """
+        n_agents = len(agents)
+        total = 0
+        for part in self.parts:
+            n_questions = len(part["survey"].questions)
+            if part["scenarios"] is not None:
+                n_scenarios = len(part["scenarios"])
+            else:
+                n_scenarios = 1
+            total += n_agents * n_scenarios * n_questions
+        return total
+
     def run(self, agents):
         """Run all parts sequentially. Returns dict of {part_name: DataFrame}."""
         if isinstance(agents, list):
@@ -116,6 +132,14 @@ class BehavioralExperiment:
         print(f"\n{'='*55}", flush=True)
         print(f"{self.name} | {self.model.model} | {len(agents)} agents", flush=True)
         print(f"{'='*55}", flush=True)
+
+        # Pre-flight cost estimate
+        try:
+            from ..analysis.cost import print_estimate
+            n_calls = self.estimate_calls(agents)
+            print_estimate(self.model.model, n_calls)
+        except Exception:
+            pass  # cost estimation is best-effort
 
         for idx, part in enumerate(self.parts, 1):
             label = part["name"]

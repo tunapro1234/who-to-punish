@@ -8,13 +8,8 @@ Usage (from project root):
 """
 
 import os
-import sys
 import json
 import argparse
-
-# Add src/ to path so `replicant` is importable
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-sys.path.insert(0, os.path.join(PROJECT_ROOT, "src"))
 
 from replicant import PersonalityFactory
 

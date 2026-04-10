@@ -14,12 +14,6 @@ The bots automatically wait at WaitPages until human participants
 have submitted their decisions, just like real human participants would.
 """
 
-import os
-import sys
-
-# Add src/ to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
-
 from replicant.otree import HybridSession
 
 

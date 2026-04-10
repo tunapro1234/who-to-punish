@@ -7,14 +7,6 @@ You can either:
   (b) Build your own EDSL Survey from scratch
 """
 
-import os
-import sys
-
-# Bootstrap path so 'replicant' is importable when run standalone
-_SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "src"))
-if _SRC not in sys.path:
-    sys.path.insert(0, _SRC)
-
 from replicant import BehavioralExperiment
 
 # Option A: use a reusable template
