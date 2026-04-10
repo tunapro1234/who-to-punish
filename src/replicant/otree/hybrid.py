@@ -174,3 +174,27 @@ class HybridSession:
             time.sleep(poll_interval)
 
         raise TimeoutError(f"Humans did not finish within {timeout}s")
+
+    def export_results(self, app_name: str = None, output_dir: str = "results",
+                       all_sessions: bool = False) -> str:
+        """
+        Download THIS session's data from oTree as a CSV file.
+
+        Args:
+            app_name: oTree app name to export. If None, exports the wide
+                CSV containing data from all apps.
+            output_dir: directory to save the CSV
+            all_sessions: if True, exports data from all sessions on the
+                server, not just this one. Default False.
+
+        Returns:
+            Path to the saved CSV file.
+        """
+        from .export import OTreeExporter
+        exporter = OTreeExporter(self.server_url, rest_key=self.rest_key)
+        session_code = None if all_sessions else self.session_code
+        if app_name:
+            return exporter.export_app(app_name, output_dir=output_dir,
+                                        session_code=session_code)
+        return exporter.export_wide(output_dir=output_dir,
+                                     session_code=session_code)

@@ -45,12 +45,16 @@ def test_otree():
     from replicant.otree import (
         OTreeClient, PageData, FormField,
         LLMBot, FormController, run_bots,
-        HybridSession, OTreeSession,
+        HybridSession, OTreeSession, OTreeExporter,
         parse, translate,
     )
     assert all(callable(f) for f in [
         run_bots, parse, translate,
     ])
+    # OTreeExporter should be instantiable without a live server
+    exporter = OTreeExporter("http://localhost:8000", rest_key="test")
+    assert exporter.server_url == "http://localhost:8000"
+    assert exporter.rest_key == "test"
 
 
 def test_analysis_cost():

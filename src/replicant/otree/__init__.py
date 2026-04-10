@@ -114,9 +114,33 @@ class OTreeSession:
         return run_bots(self.server_url, participant_urls, personalities,
                         self.model, self.api_key, names)
 
+    def export_results(self, app_name: str = None, session_code: str = None,
+                       output_dir: str = "results", rest_key: str = None) -> str:
+        """
+        Download experiment data from oTree as a CSV file.
+
+        Args:
+            app_name: oTree app name to export. If None, exports wide CSV.
+            session_code: restrict to a specific session. If None, exports all.
+            output_dir: directory to save the CSV
+            rest_key: oTree REST API key (defaults to OTREE_REST_KEY env)
+
+        Returns:
+            Path to the saved CSV file.
+        """
+        from .export import OTreeExporter
+        exporter = OTreeExporter(self.server_url, rest_key=rest_key)
+        if app_name:
+            return exporter.export_app(app_name, output_dir=output_dir,
+                                        session_code=session_code)
+        return exporter.export_wide(output_dir=output_dir,
+                                     session_code=session_code)
+
+
+from .export import OTreeExporter
 
 __all__ = [
-    "OTreeSession", "HybridSession",
+    "OTreeSession", "HybridSession", "OTreeExporter",
     "parse", "translate",
     "OTreeApp", "FieldDef", "PageDef",
     "OTreeClient", "PageData", "FormField",

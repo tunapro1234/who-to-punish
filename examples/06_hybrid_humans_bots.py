@@ -71,8 +71,10 @@ def main():
     except TimeoutError:
         print("Timeout waiting for humans (still running?)")
 
-    print(f"\nSession {session.session_code} complete.")
-    print(f"View results at: {SERVER}/SessionData/{session.session_code}")
+    # 8. Export the data (humans + bots) to CSV via the REST API
+    csv_path = session.export_results(app_name="ertan2009", output_dir="results")
+    print(f"\nExported all participant data to: {csv_path}")
+    print(f"View admin page: {SERVER}/SessionData/{session.session_code}")
 
 
 if __name__ == "__main__":

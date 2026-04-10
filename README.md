@@ -179,6 +179,15 @@ results = session.run_bots(bot_urls, big5=True)
 
 See `examples/06_hybrid_humans_bots.py` for a complete example.
 
+After the session finishes, fetch the data (humans + bots together) from oTree:
+
+```python
+csv_path = session.export_results(app_name="ertan2009", output_dir="results")
+```
+
+This calls oTree's REST API export endpoint and saves the participant data
+as a CSV — one row per participant, all form responses included.
+
 ## BFI-2 Personality System
 
 `replicant` uses the **BFI-2-Expanded** format (Soto & John, 2017) — instead of giving LLMs numeric trait scores (which don't reliably influence behavior), it builds rich personality descriptions from a 7-level sentence bank.

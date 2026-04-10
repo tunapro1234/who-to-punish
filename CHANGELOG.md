@@ -5,6 +5,16 @@ All notable changes to `replicant` will be documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+- `replicant.otree.OTreeExporter` — download experiment data from a running
+  oTree server via REST API export endpoints
+- `OTreeSession.export_results()` and `HybridSession.export_results()` —
+  one-line CSV export of session data after a run
+- HybridSession defaults to filtering exports by its own session code so
+  you don't accidentally pull all sessions on the server
+
 ## [0.3.0] — 2026-04-10
 
 **BREAKING:** Dropped the EDSL-based experiment pipeline. `replicant` is now
