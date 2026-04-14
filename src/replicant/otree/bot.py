@@ -317,10 +317,22 @@ class LLMBot:
                 user_msg = self._build_feedback(errors, cleaned, [field])
 
             if field.name not in all_answers:
+                # Include diagnostic info: reasoning tail tells us WHY the
+                # content was empty (e.g. reasoning-token exhaustion).
+                last_reasoning = getattr(self, "_last_empty_reasoning", "") or ""
+                last_finish = getattr(self, "_last_finish_reason", "") or ""
+                diagnostic = (
+                    f"Failed on field '{field.name}' after {MAX_LLM_RETRIES} attempts. "
+                    f"Last response: {response[:200] if response else 'empty'}"
+                )
+                if last_reasoning:
+                    diagnostic += (
+                        f" | finish={last_finish} | "
+                        f"reasoning_tail: ...{last_reasoning[-300:]}"
+                    )
                 self.log.append({
                     'page': 'FIELD_FAILURE',
-                    'error': f"Failed on field '{field.name}' after {MAX_LLM_RETRIES} attempts. "
-                             f"Last response: {response[:200] if response else 'empty'}",
+                    'error': diagnostic,
                 })
                 return {}
 
@@ -408,7 +420,14 @@ class LLMBot:
         """Persistent chat. Full history sent each call."""
         self.messages.append({"role": "user", "content": user_prompt})
         content = self._post_openrouter(self.messages)
-        self.messages.append({"role": "assistant", "content": content or "(no response)"})
+
+        if content:
+            self.messages.append({"role": "assistant", "content": content})
+        else:
+            # Empty response — remove our user message so the conversation
+            # doesn't accumulate unanswered prompts across retries.
+            self.messages.pop()
+
         return content
 
     def _call_agent(self, user_prompt: str) -> str:
@@ -419,37 +438,78 @@ class LLMBot:
         )
 
     def _post_openrouter(self, messages: list[dict]) -> str:
-        """Raw OpenRouter API call with retry."""
+        """
+        Raw OpenRouter API call with retry.
+
+        Reasoning models (step-3.5, deepseek-r1) can return empty content when
+        the reasoning budget is exhausted. On empty content we capture the
+        reasoning trace for diagnostics, log it, and retry — in chat mode we
+        also drop the last user message so each retry is clean.
+        """
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
         }
         payload = {
             "model": self.model,
-            "max_tokens": 64000,
+            "max_tokens": 128000,
             "temperature": 0.5,
             "messages": messages,
         }
 
-        content = ""
+        last_reasoning = ""
+        last_finish = ""
+        last_usage = {}
+
         for attempt in range(3):
             try:
                 r = http_requests.post(OPENROUTER_URL, headers=headers,
-                                       json=payload, timeout=120)
+                                       json=payload, timeout=600)
                 if r.status_code == 429:
+                    if attempt < 2:
+                        self._print(f"    rate limited, waiting {3*(attempt+1)}s...")
                     time.sleep(3 * (attempt + 1))
                     continue
                 r.raise_for_status()
-                content = r.json()["choices"][0]["message"].get("content", "")
+
+                data = r.json()
+                choice = data["choices"][0]
+                msg = choice["message"]
+                content = msg.get("content", "") or ""
+                last_reasoning = msg.get("reasoning", "") or ""
+                last_finish = choice.get("finish_reason", "")
+                last_usage = data.get("usage", {})
+
                 if content:
-                    break
+                    return content
+
+                # Empty content — log the diagnostic signature
+                reasoning_tokens = last_usage.get(
+                    "completion_tokens_details", {}
+                ).get("reasoning_tokens", 0)
+                total_tokens = last_usage.get("completion_tokens", 0)
+                self._print(
+                    f"    empty content (finish={last_finish}, "
+                    f"reasoning={reasoning_tokens}tok, total={total_tokens}tok). "
+                    f"Retry {attempt+1}/3..."
+                )
+                if last_reasoning and self.verbose:
+                    tail = last_reasoning[-200:].replace("\n", " ")
+                    self._print(f"    reasoning tail: ...{tail}")
                 time.sleep(2)
                 continue
-            except Exception:
+            except http_requests.exceptions.Timeout:
+                self._print(f"    API timeout after 600s, retry {attempt+1}/3")
+                continue
+            except Exception as e:
+                self._print(f"    API error: {type(e).__name__}: {str(e)[:100]}")
                 if attempt < 2:
                     time.sleep(2 ** attempt)
 
-        return content
+        # All retries failed. Stash last reasoning so the failure log has context.
+        self._last_empty_reasoning = last_reasoning
+        self._last_finish_reason = last_finish
+        return ""
 
     def _page_label(self, page: PageData) -> str:
         """Extract a readable page name from the URL."""
