@@ -1,0 +1,111 @@
+participant.id_in_session,participant.code,participant.label,participant._is_bot,participant._index_in_pages,participant._max_page_index,participant._current_app_name,participant._current_page_name,participant.time_started_utc,participant.visited,participant.mturk_worker_id,participant.mturk_assignment_id,participant.payoff,player.id_in_group,player.role,player.payoff,player.contribution,player.vote_punish_low,player.vote_punish_high,player.contrib_no_punishment,player.contrib_punish_low,player.contrib_punish_high,player.contrib_unrestricted,player.punish_amount_mixed,player.punish_target_mixed,player.punish_amount_freerider,player.punish_target_freerider,player.punish_amount_cooperate,player.punish_target_cooperate,group.id_in_subsession,subsession.round_number,session.code,session.label,session.mturk_HITId,session.mturk_HITGroupId,session.comment,session.is_demo
+1,7lxs5s8e,,0,1,5,ertan2009_v2,Baseline,2026-04-14 13:38:57.941384,1,,,0.0,1,,0.0,,,,,,,,,,,,,,1,1,8qd6enls,,,,,0
+1,uatu4pzv,,0,1,5,ertan2009_v2,Baseline,2026-04-14 13:39:07.001250,1,,,0.0,1,,0.0,,,,,,,,,,,,,,1,1,y3le007p,,,,,0
+1,a6g9wqmr,,0,1,5,ertan2009_v2,Baseline,2026-04-14 13:39:34.604386,1,,,0.0,1,,0.0,,,,,,,,,,,,,,1,1,7rl6i8pi,,,,,0
+1,t25wq0hg,,0,1,5,ertan2009_v2,Baseline,2026-04-14 13:40:10.074603,1,,,0.0,1,,0.0,,,,,,,,,,,,,,1,1,l8zqekmk,,,,,0
+1,dv0za8zv,,0,1,5,ertan2009_v2,Baseline,2026-04-14 13:40:43.062013,1,,,0.0,1,,0.0,,,,,,,,,,,,,,1,1,88htzkig,,,,,0
+1,va052sof,,0,1,5,ertan2009_v2,Baseline,2026-04-14 13:41:57.333495,1,,,0.0,1,,0.0,,,,,,,,,,,,,,1,1,3qypf39n,,,,,0
+1,9mm80o2h,,0,1,5,ertan2009_v2,Baseline,2026-04-14 13:42:50.422100,1,,,0.0,1,,0.0,,,,,,,,,,,,,,1,1,80sm0vkg,,,,,0
+1,ra9skc9b,,0,3,5,ertan2009_v2,Regimes,2026-04-14 13:43:19.101557,1,,,0.0,1,,0.0,0,No,No,,,,,,,,,,,1,1,utttw1fw,,,,,0
+1,eqaszca4,,0,6,5,ertan2009_v2,Done,2026-04-14 13:49:19.150343,1,,,0.0,1,,0.0,5,Yes,No,4,6,5,7,2,Lowest contributor,3,Lowest contributor,0,Nobody,1,1,oq8ehm05,,,,,0
+1,jxkj2m88,,0,6,5,ertan2009_v2,Done,2026-04-14 15:29:14.941036,1,,,0.0,1,,0.0,5,Yes,No,4,6,5,7,2,Lowest contributor,3,Lowest contributor,0,Nobody,1,1,yvtdp2y6,,,,,0
+1,u6sr7f6g,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:33.932663,1,,,0.0,1,,0.0,0,No,No,0,5,0,5,1,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,tl74exsu,,,,,0
+2,t50in1k7,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:33.953261,1,,,0.0,2,,0.0,0,No,No,0,10,0,10,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+3,id9odg95,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:33.973061,1,,,0.0,3,,0.0,0,Yes,No,0,10,0,5,1,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,tl74exsu,,,,,0
+4,shvskukw,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:33.989866,1,,,0.0,4,,0.0,0,Yes,No,0,10,0,10,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,tl74exsu,,,,,0
+5,nute61co,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.003919,1,,,0.0,5,,0.0,0,No,No,0,5,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+6,vllgucus,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.017976,1,,,0.0,6,,0.0,0,No,No,0,5,0,5,0,Below-average contributors,0,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+7,nn4vgy83,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.033321,1,,,0.0,7,,0.0,5,Yes,No,5,10,0,5,3,Lowest contributor,5,Lowest contributor,1,Lowest contributor,1,1,tl74exsu,,,,,0
+8,p9dlqj7l,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.047011,1,,,0.0,8,,0.0,0,No,No,0,0,0,0,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+9,qf8p7z1p,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.085243,1,,,0.0,9,,0.0,0,No,No,0,8,0,5,0,Nobody,3,Below-average contributors,0,Nobody,1,1,tl74exsu,,,,,0
+10,4ifc4lng,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.099255,1,,,0.0,10,,0.0,0,No,No,0,0,0,0,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+11,ig1l7pac,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.113403,1,,,0.0,11,,0.0,0,Yes,No,0,10,0,10,3,Below-average contributors,2,Below-average contributors,2,Below-average contributors,1,1,tl74exsu,,,,,0
+12,iy8nwjr3,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.155515,1,,,0.0,12,,0.0,0,No,No,0,8,0,8,3,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+13,7hpdibec,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.127232,1,,,0.0,13,,0.0,0,Yes,No,0,10,0,5,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,tl74exsu,,,,,0
+14,4yb0v1ls,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.139933,1,,,0.0,14,,0.0,0,No,No,0,5,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+15,fx8qd98d,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.169558,1,,,0.0,15,,0.0,0,No,No,0,5,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+16,q8ue12jb,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.197816,1,,,0.0,16,,0.0,0,No,No,0,10,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+17,xxms93p2,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.183710,1,,,0.0,17,,0.0,5,Yes,No,5,10,0,5,1,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+18,qmmefba4,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.212519,1,,,0.0,18,,0.0,3,Yes,No,3,8,0,5,1,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+19,uipq45cx,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.225294,1,,,0.0,19,,0.0,0,No,No,0,10,0,5,0,Below-average contributors,0,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+20,k6r1us2h,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.240781,1,,,0.0,20,,0.0,0,Yes,No,0,10,0,10,2,Below-average contributors,2,Below-average contributors,2,Below-average contributors,1,1,tl74exsu,,,,,0
+21,5jztohkf,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.253506,1,,,0.0,21,,0.0,0,Yes,No,0,10,0,5,3,Below-average contributors,2,Below-average contributors,1,Below-average contributors,1,1,tl74exsu,,,,,0
+22,nzheyns9,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.269036,1,,,0.0,22,,0.0,5,Yes,No,5,10,0,10,3,Below-average contributors,2,Below-average contributors,2,Below-average contributors,1,1,tl74exsu,,,,,0
+23,mw5lf610,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.283519,1,,,0.0,23,,0.0,0,Yes,No,0,10,0,5,2,Lowest contributor,2,Lowest contributor,2,Lowest contributor,1,1,tl74exsu,,,,,0
+24,ptimnzpo,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.297781,1,,,0.0,24,,0.0,0,No,No,0,8,0,4,0,Below-average contributors,0,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+25,8bxpzbo2,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.312758,1,,,0.0,25,,0.0,0,No,No,0,5,0,5,3,Below-average contributors,2,Below-average contributors,2,Below-average contributors,1,1,tl74exsu,,,,,0
+26,dnkbfld0,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.329851,1,,,0.0,26,,0.0,0,Yes,No,0,10,0,5,5,Below-average contributors,7,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+27,fwk0b21f,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.343075,1,,,0.0,27,,0.0,0,No,No,0,0,0,0,0,Below-average contributors,0,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+28,ztdobjre,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.357308,1,,,0.0,28,,0.0,0,No,No,0,10,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+29,waz15dmc,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.371442,1,,,0.0,29,,0.0,0,Yes,No,0,10,0,5,3,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+30,txxeyu25,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.385497,1,,,0.0,30,,0.0,0,No,No,0,0,0,0,0,Below-average contributors,0,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+31,3rdwhugs,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.398308,1,,,0.0,31,,0.0,0,No,No,0,10,0,5,3,Below-average contributors,5,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+32,ryjom779,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.427030,1,,,0.0,32,,0.0,0,Yes,No,0,10,0,5,3,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+33,k36yrcij,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.457098,1,,,0.0,33,,0.0,0,No,No,0,0,0,0,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+34,uxk4msib,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.440727,1,,,0.0,34,,0.0,0,No,No,0,10,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+35,bbiro7a8,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.471642,1,,,0.0,35,,0.0,0,No,No,0,5,0,5,2,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+36,nxpt1ji3,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.485986,1,,,0.0,36,,0.0,0,Yes,No,0,10,0,10,2,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+37,dhxcnn5w,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.555055,1,,,0.0,37,,0.0,5,Yes,No,5,8,0,5,3,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,tl74exsu,,,,,0
+38,p6nhdink,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.526342,1,,,0.0,38,,0.0,0,Yes,No,0,10,0,10,3,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,tl74exsu,,,,,0
+39,58jt9mu0,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.540413,1,,,0.0,39,,0.0,0,No,No,0,10,0,5,3,Below-average contributors,5,Below-average contributors,2,Below-average contributors,1,1,tl74exsu,,,,,0
+40,xk7e9wef,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.567652,1,,,0.0,40,,0.0,0,No,No,0,0,0,0,1,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,tl74exsu,,,,,0
+41,n7uc9569,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.583344,1,,,0.0,41,,0.0,5,Yes,No,5,10,0,5,2,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+42,1z7hieec,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.596085,1,,,0.0,42,,0.0,0,Yes,No,0,10,0,10,2,Below-average contributors,2,Below-average contributors,2,Below-average contributors,1,1,tl74exsu,,,,,0
+43,hjc46r7q,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.638104,1,,,0.0,43,,0.0,0,No,No,0,0,0,0,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+44,8z6qmkm1,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.702680,1,,,0.0,44,,0.0,5,Yes,No,5,10,0,5,3,Below-average contributors,3,Below-average contributors,2,Below-average contributors,1,1,tl74exsu,,,,,0
+45,toma46zy,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.684112,1,,,0.0,45,,0.0,5,Yes,No,5,10,0,10,3,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+46,cng04kr8,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.669525,1,,,0.0,46,,0.0,0,No,No,0,0,0,0,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+47,5abnad5b,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.654317,1,,,0.0,47,,0.0,0,Yes,No,0,10,0,10,3,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,tl74exsu,,,,,0
+48,xvf7jks3,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.747765,1,,,0.0,48,,0.0,0,No,No,0,0,0,0,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+49,c6wbvwu0,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.731823,1,,,0.0,49,,0.0,0,No,No,0,0,0,0,0,Nobody,0,Nobody,0,Nobody,1,1,tl74exsu,,,,,0
+50,ghbk5yct,,0,6,5,ertan2009_v2,Done,2026-04-14 15:30:34.718716,1,,,0.0,50,,0.0,0,No,No,0,5,0,5,0,Below-average contributors,0,Below-average contributors,0,Below-average contributors,1,1,tl74exsu,,,,,0
+1,3wowouy8,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.723294,1,,,0.0,1,,0.0,6,Yes,No,6,8,4,6,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+2,q3b0uzev,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.756384,1,,,0.0,2,,0.0,5,Yes,No,5,7,4,5,1,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+3,gdczyqog,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.742387,1,,,0.0,3,,0.0,10,Yes,No,10,10,10,10,2,Below-average contributors,3,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+4,ndm6o3u1,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.825263,1,,,0.0,4,,0.0,5,Yes,No,5,8,2,7,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+5,iramta8z,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.785850,1,,,0.0,5,,0.0,6,Yes,No,6,8,4,6,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+6,xia03v73,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.795487,1,,,0.0,6,,0.0,0,No,No,0,10,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,oyzdnk6k,,,,,0
+7,e87gw9v5,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.771104,1,,,0.0,7,,0.0,5,Yes,No,5,10,0,10,5,Below-average contributors,5,Below-average contributors,1,Below-average contributors,1,1,oyzdnk6k,,,,,0
+8,5k2ui4v0,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.836592,1,,,0.0,8,,0.0,5,Yes,No,5,8,3,5,2,Lowest contributor,2,Lowest contributor,0,Nobody,1,1,oyzdnk6k,,,,,0
+9,icukdupu,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.846618,1,,,0.0,9,,0.0,5,Yes,No,5,8,2,6,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+10,dhgnnak9,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.875546,1,,,0.0,10,,0.0,5,Yes,No,5,8,2,5,2,Below-average contributors,2,Below-average contributors,1,Below-average contributors,1,1,oyzdnk6k,,,,,0
+11,msi95q5q,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.858714,1,,,0.0,11,,0.0,5,Yes,No,5,8,0,8,2,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+12,9y8u70sk,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.886271,1,,,0.0,12,,0.0,5,Yes,No,5,8,2,5,2,Below-average contributors,3,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+13,d4c2rujp,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.898833,1,,,0.0,13,,0.0,5,Yes,No,5,7,3,7,2,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+14,x6gtgl6g,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.909450,1,,,0.0,14,,0.0,5,Yes,No,5,8,3,8,1,Lowest contributor,2,Lowest contributor,0,Nobody,1,1,oyzdnk6k,,,,,0
+15,59n18tfv,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.920351,1,,,0.0,15,,0.0,10,Yes,No,10,10,10,10,1,Below-average contributors,1,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+16,ypk0w9kw,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.932170,1,,,0.0,16,,0.0,5,Yes,No,5,8,2,5,2,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+17,ojoqs3os,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.942776,1,,,0.0,17,,0.0,5,Yes,No,5,8,3,8,1,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+18,1bzty6l2,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.953443,1,,,0.0,18,,0.0,10,Yes,No,10,10,5,10,1,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+19,tj3sb47f,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.964328,1,,,0.0,19,,0.0,6,Yes,No,6,8,4,8,3,Lowest contributor,2,Lowest contributor,0,Lowest contributor,1,1,oyzdnk6k,,,,,0
+20,f0cr1dhb,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.976623,1,,,0.0,20,,0.0,10,Yes,No,10,10,10,10,0,Nobody,0,Nobody,0,Nobody,1,1,oyzdnk6k,,,,,0
+21,9kvrmm8v,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.989025,1,,,0.0,21,,0.0,4,Yes,No,4,7,2,5,2,Below-average contributors,2,Below-average contributors,1,Below-average contributors,1,1,oyzdnk6k,,,,,0
+22,7fnqahid,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:45.999724,1,,,0.0,22,,0.0,5,Yes,No,5,8,0,5,2,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+23,yjvebg24,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.010425,1,,,0.0,23,,0.0,5,Yes,No,5,8,2,5,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+24,2907c8xh,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.035199,1,,,0.0,24,,0.0,5,Yes,No,5,8,2,5,2,Below-average contributors,2,Below-average contributors,1,Below-average contributors,1,1,oyzdnk6k,,,,,0
+25,f2czefge,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.024208,1,,,0.0,25,,0.0,5,Yes,No,5,8,0,5,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+26,56wdseo0,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.047526,1,,,0.0,26,,0.0,10,No,No,10,10,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,oyzdnk6k,,,,,0
+27,bi0uets8,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.057686,1,,,0.0,27,,0.0,5,Yes,No,5,7,4,5,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+28,x4utqmcc,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.108904,1,,,0.0,28,,0.0,10,Yes,No,10,10,0,0,1,Below-average contributors,1,Below-average contributors,1,Below-average contributors,1,1,oyzdnk6k,,,,,0
+29,kgegqdyo,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.092379,1,,,0.0,29,,0.0,6,Yes,No,6,8,4,6,2,Below-average contributors,3,Below-average contributors,1,Below-average contributors,1,1,oyzdnk6k,,,,,0
+30,r4cis5l7,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.122098,1,,,0.0,30,,0.0,2,Yes,No,2,6,0,4,2,Below-average contributors,2,Below-average contributors,2,Below-average contributors,1,1,oyzdnk6k,,,,,0
+31,xcu19t9r,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.134627,1,,,0.0,31,,0.0,5,Yes,No,5,8,2,5,2,Lowest contributor,2,Lowest contributor,0,Nobody,1,1,oyzdnk6k,,,,,0
+32,n6x5pzd2,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.147970,1,,,0.0,32,,0.0,5,Yes,No,5,10,4,7,2,Lowest contributor,2,Lowest contributor,0,Nobody,1,1,oyzdnk6k,,,,,0
+33,tcyl9j5i,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.158673,1,,,0.0,33,,0.0,6,No,No,6,8,2,5,1,Lowest contributor,2,Lowest contributor,0,Lowest contributor,1,1,oyzdnk6k,,,,,0
+34,dgkwbm44,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.168823,1,,,0.0,34,,0.0,5,Yes,No,5,10,0,5,2,Below-average contributors,3,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+35,5vf10la7,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.192186,1,,,0.0,35,,0.0,5,Yes,No,5,8,2,5,2,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+36,vxzeeser,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.180521,1,,,0.0,36,,0.0,5,Yes,No,5,10,0,5,1,Lowest contributor,1,Lowest contributor,0,Nobody,1,1,oyzdnk6k,,,,,0
+37,5cl8hchd,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.200498,1,,,0.0,37,,0.0,5,Yes,No,5,7,4,6,3,Below-average contributors,5,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+38,5tcdi8ut,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.210507,1,,,0.0,38,,0.0,5,Yes,No,5,7,2,6,1,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+39,aetaza1y,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.231753,1,,,0.0,39,,0.0,0,No,No,0,5,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,oyzdnk6k,,,,,0
+40,x78tdu2o,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.262992,1,,,0.0,40,,0.0,5,Yes,No,5,10,2,5,3,Below-average contributors,2,Below-average contributors,1,Below-average contributors,1,1,oyzdnk6k,,,,,0
+41,8g4zzmmc,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.220393,1,,,0.0,41,,0.0,5,Yes,No,5,8,2,5,2,Below-average contributors,2,Below-average contributors,1,Below-average contributors,1,1,oyzdnk6k,,,,,0
+42,yvhq1c5f,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.273978,1,,,0.0,42,,0.0,5,Yes,No,5,8,3,5,2,Below-average contributors,2,Below-average contributors,0,Nobody,1,1,oyzdnk6k,,,,,0
+43,merzlx3a,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.286073,1,,,0.0,43,,0.0,5,Yes,No,5,10,0,5,1,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+44,i3e33miw,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.298343,1,,,0.0,44,,0.0,3,Yes,No,3,7,0,5,2,Below-average contributors,2,Below-average contributors,2,Below-average contributors,1,1,oyzdnk6k,,,,,0
+45,vjk56waw,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.309014,1,,,0.0,45,,0.0,5,Yes,No,5,8,2,5,1,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+46,iv0aqecp,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.321265,1,,,0.0,46,,0.0,0,No,No,0,5,0,5,0,Nobody,0,Nobody,0,Nobody,1,1,oyzdnk6k,,,,,0
+47,cl807kkj,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.352861,1,,,0.0,47,,0.0,5,Yes,No,5,7,0,7,1,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0
+48,rki4nzd0,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.363386,1,,,0.0,48,,0.0,5,Yes,No,5,9,1,5,2,Below-average contributors,3,Below-average contributors,1,Below-average contributors,1,1,oyzdnk6k,,,,,0
+49,wm5nfe5b,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.374166,1,,,0.0,49,,0.0,4,Yes,No,4,5,3,4,2,Below-average contributors,2,Below-average contributors,2,Below-average contributors,1,1,oyzdnk6k,,,,,0
+50,98kfcahe,,0,6,5,ertan2009_v2,Done,2026-04-14 15:53:46.391653,1,,,0.0,50,,0.0,7,Yes,No,7,9,5,7,2,Below-average contributors,2,Below-average contributors,0,Below-average contributors,1,1,oyzdnk6k,,,,,0

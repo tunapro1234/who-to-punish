@@ -1,0 +1,24 @@
+ERTAN 2009 V2 — STATISTICAL SUMMARY (N=50 per condition, chat mode, step-3.5-flash)
+App: ertan2009_v2 (group=4, endowment=10, punishment ratio 1:4 — matches original paper)
+Both conditions: 50/50 completion, 0 field failures.
+
+Field                         Default(mean±sd)       Random(mean±sd)           p       d
+------------------------------------------------------------------------------------------
+contribution                  0.76 ±  1.78      5.30 ±  2.23      0.0000   -2.25 ***
+contrib_no_punishment         0.76 ±  1.78      5.30 ±  2.23      0.0000   -2.25 ***
+contrib_punish_low            7.00 ±  3.96      8.18 ±  1.37      0.6992   -0.40 
+contrib_punish_high           0.00 ±  0.00      2.42 ±  2.48      0.0000   -1.38 ***
+contrib_unrestricted          5.04 ±  3.23      5.92 ±  1.87      0.0468   -0.33 *
+punish_amount_mixed           1.42 ±  1.40      1.68 ±  0.89      0.3579   -0.22 
+punish_amount_freerider       1.52 ±  1.58      1.96 ±  0.97      0.0193   -0.34 *
+punish_amount_cooperate       0.36 ±  0.75      0.30 ±  0.58      0.8750    0.09 
+
+VOTING (chi-square)
+  vote_punish_low        Default 22/50 = 44%   Random 45/50 = 90%   chi2=21.89 p=0.0000 ***
+  vote_punish_high       Default 0/50 = 0%   Random 0/50 = 0%   chi2=nan p=nan 
+
+FRIEDMAN (within-agent regime effect)
+  DEFAULT: chi2=110.54 p=0.000000 N=50  (regimes significantly differ within agent)
+  RANDOM: chi2=126.60 p=0.000000 N=50  (regimes significantly differ within agent)
+
+BONFERRONI: alpha=0.05/10=0.005. Significant effects (***, p<0.001) all survive.

@@ -1,0 +1,16 @@
+[
+  {
+    "label": "default",
+    "n": 50,
+    "n_complete": 50,
+    "n_field_failures": 0,
+    "elapsed_minutes": 23.2
+  },
+  {
+    "label": "random",
+    "n": 50,
+    "n_complete": 50,
+    "n_field_failures": 0,
+    "elapsed_minutes": 20.48
+  }
+]

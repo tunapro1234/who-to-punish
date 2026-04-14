@@ -1,0 +1,1952 @@
+[
+  {
+    "agent": "random_1",
+    "url": "http://localhost:8000/InitializeParticipant/3wowouy8",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 6
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 6,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 4,
+          "contrib_unrestricted": 6
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_2",
+    "url": "http://localhost:8000/InitializeParticipant/q3b0uzev",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 7,
+          "contrib_punish_high": 4,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_3",
+    "url": "http://localhost:8000/InitializeParticipant/gdczyqog",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 10,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 3,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_4",
+    "url": "http://localhost:8000/InitializeParticipant/ndm6o3u1",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 7
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_5",
+    "url": "http://localhost:8000/InitializeParticipant/iramta8z",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 6
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 6,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 4,
+          "contrib_unrestricted": 6
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_6",
+    "url": "http://localhost:8000/InitializeParticipant/xia03v73",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 0
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 0,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 0,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Nobody",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_7",
+    "url": "http://localhost:8000/InitializeParticipant/e87gw9v5",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 5,
+          "punish_amount_freerider": 5,
+          "punish_amount_cooperate": 1,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_8",
+    "url": "http://localhost:8000/InitializeParticipant/5k2ui4v0",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 3,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Lowest contributor",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_9",
+    "url": "http://localhost:8000/InitializeParticipant/icukdupu",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 6
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_10",
+    "url": "http://localhost:8000/InitializeParticipant/dhgnnak9",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 1,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_11",
+    "url": "http://localhost:8000/InitializeParticipant/msi95q5q",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 8
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_12",
+    "url": "http://localhost:8000/InitializeParticipant/9y8u70sk",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 3,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_13",
+    "url": "http://localhost:8000/InitializeParticipant/d4c2rujp",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 7,
+          "contrib_punish_high": 3,
+          "contrib_unrestricted": 7
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_14",
+    "url": "http://localhost:8000/InitializeParticipant/x6gtgl6g",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 3,
+          "contrib_unrestricted": 8
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Lowest contributor",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_15",
+    "url": "http://localhost:8000/InitializeParticipant/59n18tfv",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 10,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 1,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_16",
+    "url": "http://localhost:8000/InitializeParticipant/ypk0w9kw",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_17",
+    "url": "http://localhost:8000/InitializeParticipant/ojoqs3os",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 3,
+          "contrib_unrestricted": 8
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_18",
+    "url": "http://localhost:8000/InitializeParticipant/1bzty6l2",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 5,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_19",
+    "url": "http://localhost:8000/InitializeParticipant/tj3sb47f",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 6
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 6,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 4,
+          "contrib_unrestricted": 8
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 3,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Lowest contributor",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Lowest contributor"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_20",
+    "url": "http://localhost:8000/InitializeParticipant/f0cr1dhb",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 10,
+          "contrib_unrestricted": 10
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 0,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Nobody",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_21",
+    "url": "http://localhost:8000/InitializeParticipant/9kvrmm8v",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 4
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 4,
+          "contrib_punish_low": 7,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 1,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_22",
+    "url": "http://localhost:8000/InitializeParticipant/7fnqahid",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_23",
+    "url": "http://localhost:8000/InitializeParticipant/yjvebg24",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_24",
+    "url": "http://localhost:8000/InitializeParticipant/2907c8xh",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 1,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_25",
+    "url": "http://localhost:8000/InitializeParticipant/f2czefge",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_26",
+    "url": "http://localhost:8000/InitializeParticipant/56wdseo0",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 0,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Nobody",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_27",
+    "url": "http://localhost:8000/InitializeParticipant/bi0uets8",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 7,
+          "contrib_punish_high": 4,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_28",
+    "url": "http://localhost:8000/InitializeParticipant/x4utqmcc",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 10
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 10,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 0
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 1,
+          "punish_amount_cooperate": 1,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_29",
+    "url": "http://localhost:8000/InitializeParticipant/kgegqdyo",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 6
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 6,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 4,
+          "contrib_unrestricted": 6
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 3,
+          "punish_amount_cooperate": 1,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_30",
+    "url": "http://localhost:8000/InitializeParticipant/r4cis5l7",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 2
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 2,
+          "contrib_punish_low": 6,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 4
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 2,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_31",
+    "url": "http://localhost:8000/InitializeParticipant/xcu19t9r",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Lowest contributor",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_32",
+    "url": "http://localhost:8000/InitializeParticipant/n6x5pzd2",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 4,
+          "contrib_unrestricted": 7
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Lowest contributor",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_33",
+    "url": "http://localhost:8000/InitializeParticipant/tcyl9j5i",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 6
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 6,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Lowest contributor",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Lowest contributor"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_34",
+    "url": "http://localhost:8000/InitializeParticipant/dgkwbm44",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 3,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_35",
+    "url": "http://localhost:8000/InitializeParticipant/5vf10la7",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_36",
+    "url": "http://localhost:8000/InitializeParticipant/vxzeeser",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 1,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Lowest contributor",
+          "punish_target_freerider": "Lowest contributor",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_37",
+    "url": "http://localhost:8000/InitializeParticipant/5cl8hchd",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 7,
+          "contrib_punish_high": 4,
+          "contrib_unrestricted": 6
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 3,
+          "punish_amount_freerider": 5,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_38",
+    "url": "http://localhost:8000/InitializeParticipant/5tcdi8ut",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 7,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 6
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_39",
+    "url": "http://localhost:8000/InitializeParticipant/aetaza1y",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 0
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 0,
+          "contrib_punish_low": 5,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 0,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Nobody",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_40",
+    "url": "http://localhost:8000/InitializeParticipant/x78tdu2o",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 3,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 1,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_41",
+    "url": "http://localhost:8000/InitializeParticipant/8g4zzmmc",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 1,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_42",
+    "url": "http://localhost:8000/InitializeParticipant/yvhq1c5f",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 3,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_43",
+    "url": "http://localhost:8000/InitializeParticipant/merzlx3a",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 10,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_44",
+    "url": "http://localhost:8000/InitializeParticipant/i3e33miw",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 3
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 3,
+          "contrib_punish_low": 7,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 2,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_45",
+    "url": "http://localhost:8000/InitializeParticipant/vjk56waw",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 8,
+          "contrib_punish_high": 2,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_46",
+    "url": "http://localhost:8000/InitializeParticipant/iv0aqecp",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 0
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "No",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 0,
+          "contrib_punish_low": 5,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 0,
+          "punish_amount_freerider": 0,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Nobody",
+          "punish_target_freerider": "Nobody",
+          "punish_target_cooperate": "Nobody"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_47",
+    "url": "http://localhost:8000/InitializeParticipant/cl807kkj",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 7,
+          "contrib_punish_high": 0,
+          "contrib_unrestricted": 7
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 1,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_48",
+    "url": "http://localhost:8000/InitializeParticipant/rki4nzd0",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 5
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 5,
+          "contrib_punish_low": 9,
+          "contrib_punish_high": 1,
+          "contrib_unrestricted": 5
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 3,
+          "punish_amount_cooperate": 1,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_49",
+    "url": "http://localhost:8000/InitializeParticipant/wm5nfe5b",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 4
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 4,
+          "contrib_punish_low": 5,
+          "contrib_punish_high": 3,
+          "contrib_unrestricted": 4
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 2,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  },
+  {
+    "agent": "random_50",
+    "url": "http://localhost:8000/InitializeParticipant/98kfcahe",
+    "decisions": [
+      {
+        "page": "Baseline",
+        "answers": {
+          "contribution": 7
+        }
+      },
+      {
+        "page": "Voting",
+        "answers": {
+          "vote_punish_low": "Yes",
+          "vote_punish_high": "No"
+        }
+      },
+      {
+        "page": "Regimes",
+        "answers": {
+          "contrib_no_punishment": 7,
+          "contrib_punish_low": 9,
+          "contrib_punish_high": 5,
+          "contrib_unrestricted": 7
+        }
+      },
+      {
+        "page": "Punishment",
+        "answers": {
+          "punish_amount_mixed": 2,
+          "punish_amount_freerider": 2,
+          "punish_amount_cooperate": 0,
+          "punish_target_mixed": "Below-average contributors",
+          "punish_target_freerider": "Below-average contributors",
+          "punish_target_cooperate": "Below-average contributors"
+        }
+      }
+    ]
+  }
+]
