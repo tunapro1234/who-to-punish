@@ -124,7 +124,11 @@ class FormController:
 class LLMBot:
     """
     An LLM agent that plays through an oTree experiment.
-    Uses FormController to validate responses before submission.
+
+    Maintains a persistent conversation with the LLM across all pages,
+    so the agent remembers its previous decisions and outcomes (e.g.
+    results pages between rounds). This enables multi-round games where
+    the agent can learn and adapt over time.
     """
 
     def __init__(self, server_url: str, participant_url: str,
@@ -140,6 +144,22 @@ class LLMBot:
         self.controller = FormController()
         self.verbose = verbose
         self.page_count = 0
+
+        # Persistent conversation — the LLM sees its full history
+        system_parts = [
+            "You are a participant in an economics experiment.",
+        ]
+        if personality:
+            system_parts.append(f"Your personality:\n{personality}")
+        system_parts.append(
+            "\nCRITICAL INSTRUCTION: When asked to make a decision, "
+            "respond with ONLY a valid JSON object. "
+            "No explanation, no markdown code blocks, no text before or after. "
+            "Just the raw JSON object."
+        )
+        self.messages = [
+            {"role": "system", "content": "\n".join(system_parts)},
+        ]
 
     def _print(self, msg: str):
         if self.verbose:
@@ -175,7 +195,6 @@ class LLMBot:
                 page_retry_count = 0
 
             if page.form_fields:
-                field_names = [f.name for f in page.form_fields]
                 self._print(f"page {self.page_count}: {page_name} ({len(page.form_fields)} fields)")
                 answers = self._decide_with_validation(page)
                 if answers:
@@ -183,7 +202,6 @@ class LLMBot:
                         'page': page_name,
                         'answers': answers,
                     })
-                    # Print each answer
                     for k, v in answers.items():
                         self._print(f"  {k} = {v}")
                     prev_url = page.url
@@ -193,7 +211,20 @@ class LLMBot:
                     self._log_error(page, "Could not produce valid answers")
                     break
             else:
-                self._print(f"page {self.page_count}: {page_name} (no fields, advancing)")
+                # Info/results page — add to conversation as context
+                context = _escape_jinja(page.body_text)
+                if context.strip():
+                    self._print(f"page {self.page_count}: {page_name} (info)")
+                    self.messages.append({
+                        "role": "user",
+                        "content": f"[Experiment info — {page_name}]\n{context}",
+                    })
+                    self.messages.append({
+                        "role": "assistant",
+                        "content": "(noted)",
+                    })
+                else:
+                    self._print(f"page {self.page_count}: {page_name} (no fields, advancing)")
                 prev_url = page.url
                 page = self.client.submit(page, {})
 
@@ -220,12 +251,12 @@ class LLMBot:
 
     def _decide_batch(self, context: str, fields: list[FormField]) -> dict:
         """Ask all fields at once. Used for simple pages (<=3 fields)."""
-        feedback = ""
+        user_msg = self._build_user_prompt(context, fields)
+
         for attempt in range(MAX_LLM_RETRIES):
             if attempt > 0:
                 self._print(f"  retry {attempt}/{MAX_LLM_RETRIES}...")
-            prompt = self._build_prompt(context, fields, feedback)
-            response = self._call_llm(prompt["system"], prompt["user"])
+            response = self._call_llm(user_msg)
             raw_answers = _parse_json_response(response)
 
             cleaned, errors = self.controller.validate(raw_answers, fields)
@@ -236,7 +267,8 @@ class LLMBot:
                 for e in errors:
                     self._print(f"  validation: {e}")
 
-            feedback = self._build_feedback(errors, cleaned, fields)
+            # Retry: add feedback as next message in the conversation
+            user_msg = self._build_feedback(errors, cleaned, fields)
 
         return {}
 
@@ -246,15 +278,14 @@ class LLMBot:
 
         for fi, field in enumerate(fields):
             self._print(f"  field {fi+1}/{len(fields)}: {field.name}...")
-            feedback = ""
+            user_msg = self._build_user_prompt(
+                context, [field], prior_answers=all_answers,
+            )
+
             for attempt in range(MAX_LLM_RETRIES):
                 if attempt > 0:
                     self._print(f"    retry {attempt}/{MAX_LLM_RETRIES}...")
-                prompt = self._build_prompt(
-                    context, [field], feedback,
-                    prior_answers=all_answers,
-                )
-                response = self._call_llm(prompt["system"], prompt["user"])
+                response = self._call_llm(user_msg)
                 raw = _parse_json_response(response)
 
                 # If the LLM returned a value but under a different key,
@@ -273,10 +304,10 @@ class LLMBot:
                     all_answers[field.name] = cleaned[field.name]
                     break
 
-                feedback = self._build_feedback(errors, cleaned, [field])
+                # Retry: feedback becomes the next message
+                user_msg = self._build_feedback(errors, cleaned, [field])
 
             if field.name not in all_answers:
-                # Log the failure details for debugging
                 self.log.append({
                     'page': 'FIELD_FAILURE',
                     'error': f"Failed on field '{field.name}' after {MAX_LLM_RETRIES} attempts. "
@@ -292,7 +323,8 @@ class LLMBot:
             return (
                 "Your previous response had errors:\n"
                 + "\n".join(f"  - {e}" for e in errors)
-                + "\nPlease fix these and try again."
+                + "\nPlease fix these and try again. "
+                "Respond with ONLY a JSON object."
             )
         if not cleaned:
             return (
@@ -300,11 +332,11 @@ class LLMBot:
                 "Respond with ONLY a JSON object, no markdown or explanation."
             )
         missing = [f.name for f in fields if f.name not in cleaned]
-        return f"Missing fields: {missing}. Include ALL fields."
+        return f"Missing fields: {missing}. Include ALL fields. JSON only."
 
-    def _build_prompt(self, context: str, fields: list[FormField],
-                      feedback: str = "", prior_answers: dict = None) -> dict:
-        """Build system and user prompts for the LLM."""
+    def _build_user_prompt(self, context: str, fields: list[FormField],
+                           prior_answers: dict = None) -> str:
+        """Build the user message for a decision."""
         field_descriptions = []
         for field in fields:
             label = field.label or field.name.replace('_', ' ')
@@ -330,27 +362,23 @@ class LLMBot:
         fields_text = "\n".join(field_descriptions)
         example = ", ".join(f'"{f.name}": ...' for f in fields)
 
-        system_prompt = (
-            "You are a participant in an economics experiment. "
-            "Your personality:\n" + self.personality + "\n\n"
-            "CRITICAL INSTRUCTION: Respond with ONLY a valid JSON object. "
-            "No explanation, no markdown code blocks, no text before or after. "
-            "Just the raw JSON object."
-        )
-
-        user_prompt = f"Page context:\n{context}\n\n"
+        prompt = f"Page context:\n{context}\n\n"
         if prior_answers:
-            user_prompt += "Your previous answers on this page:\n"
-            user_prompt += json.dumps(prior_answers, indent=2) + "\n\n"
-        user_prompt += f"Field to answer:\n{fields_text}"
-        if feedback:
-            user_prompt += f"\n\n{feedback}"
-        user_prompt += f"\n\nRespond: {{{example}}}"
+            prompt += "Your previous answers on this page:\n"
+            prompt += json.dumps(prior_answers, indent=2) + "\n\n"
+        prompt += f"Decision:\n{fields_text}"
+        prompt += f"\n\nRespond: {{{example}}}"
 
-        return {"system": system_prompt, "user": user_prompt}
+        return prompt
 
-    def _call_llm(self, system_prompt: str, user_prompt: str) -> str:
-        """Direct OpenRouter API call with retry."""
+    def _call_llm(self, user_prompt: str) -> str:
+        """
+        Send a message in the persistent conversation and get a response.
+        The full conversation history is sent each time, giving the LLM
+        memory of all previous pages, decisions, and outcomes.
+        """
+        self.messages.append({"role": "user", "content": user_prompt})
+
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
@@ -359,11 +387,10 @@ class LLMBot:
             "model": self.model,
             "max_tokens": 16000,
             "temperature": 0.5,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
+            "messages": self.messages,
         }
+
+        content = ""
         for attempt in range(3):
             try:
                 r = http_requests.post(OPENROUTER_URL, headers=headers,
@@ -372,9 +399,9 @@ class LLMBot:
                     time.sleep(3 * (attempt + 1))
                     continue
                 r.raise_for_status()
-                content = r.json()["choices"][0]["message"].get("content")
+                content = r.json()["choices"][0]["message"].get("content", "")
                 if content:
-                    return content
+                    break
                 # Reasoning model might put answer in reasoning field
                 # with empty content — retry
                 time.sleep(2)
@@ -382,7 +409,10 @@ class LLMBot:
             except Exception:
                 if attempt < 2:
                     time.sleep(2 ** attempt)
-        return ""
+
+        # Store the response in conversation history
+        self.messages.append({"role": "assistant", "content": content or "(no response)"})
+        return content
 
     def _page_label(self, page: PageData) -> str:
         """Extract a readable page name from the URL."""
