@@ -136,6 +136,19 @@ def _get_model():
     return model or "stepfun/step-3.5-flash"
 
 
+def _get_mode():
+    print()
+    print("  Bot mode:")
+    print("    [1] Stateless     — fresh context each page (cheapest, no memory)")
+    print("    [2] Conversation  — persistent chat (remembers previous rounds)")
+    print("    [3] Agent         — OpenClaw agent (self-learning, requires openclaw)")
+    print()
+    choice = input("  Mode [2]: ").strip() or "2"
+    modes = {"1": "stateless", "2": "conversation", "3": "agent"}
+    mode = modes.get(choice, "conversation")
+    return mode
+
+
 def _print_results(results):
     print()
     print("=" * 60)
@@ -191,6 +204,9 @@ def main():
     # Model
     model = _get_model()
 
+    # Mode
+    mode = _get_mode()
+
     # Confirm
     print()
     print("-" * 60)
@@ -198,6 +214,7 @@ def main():
     print(f"  Server:        {server_url}")
     print(f"  Model:         {model}")
     print(f"  Personality:   {personality_label}")
+    print(f"  Mode:          {mode}")
     print("-" * 60)
     print()
 
@@ -231,6 +248,7 @@ def main():
         api_key=api_key,
         names=names,
         verbose=True,
+        mode=mode,
     )
 
     _print_results(results)
