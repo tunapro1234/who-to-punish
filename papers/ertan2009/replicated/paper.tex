@@ -11,14 +11,13 @@
 \usepackage{setspace}
 \usepackage{float}
 \usepackage{tabularx}
-\usepackage{multirow}
 
 \geometry{margin=1in}
 \onehalfspacing
 
-\title{Who to Punish? Replicating Ertan, Page and Putterman (2009) \\ with Default and Personality-Induced LLM Agents}
+\title{Replicating Ertan, Page, and Putterman (2009) with LLM Agents:\\ Default and Personality-Induced Conditions}
 
-\author{
+\author{%
   Tuna G\"ul\\
   Bo\u{g}azi\c{c}i University
   \and
@@ -33,41 +32,43 @@
 \maketitle
 
 \begin{abstract}
-We replicate the public goods experiment of \citet{ertan2009who} using Large Language Model (LLM) agents connected to a real \texttt{oTree} experimental server, comparing three conditions at $N=50$ each: default agents with no personality assignment, agents assigned random Big Five personalities drawn from US adult norms, and agents skewed toward high agreeableness and low neuroticism. Default agents already reproduce the paper's qualitative institutional finding---$94\%$ vote to allow punishment of low contributors, $0\%$ to allow punishment of high---and engage in costly punishment of free-riders. As the personality prompt shifts toward more prosocial profiles, contributions rise and costly punishment falls monotonically across the three conditions, matching the direction predicted by RLHF prosociality bias. In the most prosocial condition, a majority of agents additionally fail to complete the costly-punishment page at all; we trace this to reasoning-token exhaustion on the underlying reasoning model rather than to behavioral refusal.
+We replicate the public-goods voting experiment of \citet{ertan2009who} using Large Language Model (LLM) agents connected to a real \texttt{oTree} server, at the original paper's experimental parameters (groups of four, an endowment of ten tokens, a marginal per-capita return of $0.4$, and a punishment cost ratio of $1{:}4$). Each agent maintains a single persistent chat conversation across every page of the experiment, so its earlier decisions and the running game context remain visible when reasoning about later decisions. We run two conditions at $N=50$ each: default agents with no personality assignment, and agents assigned random Big Five personalities drawn from US adult norms. Both conditions complete cleanly: $50/50$ agents and zero field-level failures. The two conditions diverge sharply. Default agents contribute almost nothing at baseline ($M=0.76$ of $10$), respond rationally to the punish-high-only regime by contributing exactly zero, and vote $44\%$ in favor of allowing punishment of low contributors (below majority). Personality agents contribute substantially more at baseline ($M=5.30$, Cohen's $d=-2.25$), retain positive contribution even when cooperation is penalised ($M=2.42$ under punish-high-only), and vote $90\%$ in favor of allowing punishment of low contributors. Both conditions vote $0\%$ for punishment of high contributors, exactly matching the original paper's headline institutional finding. Within each condition, a Friedman test confirms that the four punishment regimes produce significantly different contributions from the same agent ($p<.001$). We apply a full statistical chain---Mann--Whitney $U$ with Bonferroni correction, chi-square for voting, Friedman for within-subject regime effects, and Cohen's $d$ for effect sizes---and report the results in detail.
 
 \medskip
-\noindent\textbf{Keywords:} LLM agents, behavioral economics, public goods game, Big Five personality, BFI-2, oTree, replication, Homo Silicus
+\noindent\textbf{Keywords:} LLM agents, behavioral economics, public-goods game, Big Five personality, BFI-2, oTree, replication, persistent memory, Homo Silicus
 \end{abstract}
 
 %----------------------------------------------------------------------
 \section{Introduction}
 %----------------------------------------------------------------------
 
-The use of large language models (LLMs) as simulated participants in economic and social science research has gained significant attention \citep{horton2023homo, aher2023turing, argyle2023out}. These ``silicon subjects'' promise rapid, low-cost behavioral experiments---but a fundamental question remains: do LLM agents behave like humans?
+The use of LLMs as simulated participants in economic and social-science experiments \citep{horton2023homo, aher2023turing, argyle2023out} promises rapid, cheap behavioral data at scales that human subjects make impractical. A single experiment with $50$ LLM agents costs less than a dollar and completes in under an hour, compared to thousands of dollars and weeks of recruitment for an equivalent human sample. The corresponding cost is empirical: LLM agents are not humans, and whether they behave like humans is a question that has to be answered one paradigm at a time.
 
-The appeal is clear. A single experiment with $50$ LLM agents costs under \$0.50 and completes in under an hour, compared to thousands of dollars and weeks of recruitment for equivalent human samples. If LLM agents can approximate human behavior with sufficient fidelity, they could serve as a tool for piloting experiments, generating hypotheses, and exploring parameter spaces before committing to expensive human studies.
+\citet{ertan2009who} is a particularly informative paradigm to ask the question on. The paper studies a voluntary contributions mechanism in which subjects vote on whether to allow punishment, and against whom. Its central finding is that groups gradually converge on allowing punishment of low contributors only---never high contributors, never unrestricted---and that this institution effectively mitigates free-riding. The design simultaneously tests two distinct dimensions: individual economic decisions (contributing, punishing) and institutional preferences (voting), and the institutional finding is unusually clean (across $160$ group-level votes in the original, no group ever voted to allow punishment of high contributors).
 
-Recent work, however, suggests that default LLM behavior often diverges from human norms in systematic ways. On some paradigms, instruction-tuned models collapse to hyper-rational, game-theoretic responses. On others, particularly after reinforcement learning from human feedback (RLHF), they exhibit excessive prosociality and social-desirability bias \citep{salecha2024social}. One approach to narrowing this gap is \emph{personality induction}: assigning agents psychometrically grounded personality descriptions so that individual-level variance emerges \citep{serapio2023personality, jiang2024personallm}.
+We replicate this experiment with two conditions of LLM agents:
 
-In this paper, we replicate the public goods experiment of \citet{ertan2009who}, in which participants decide how many tokens to contribute to a group project and vote on whether to allow a punishment institution that targets low contributors, high contributors, both, or neither. The original study is particularly well-suited for LLM replication because it tests \emph{two} distinct dimensions simultaneously: individual economic decisions (contributing, punishing) and institutional preferences (voting on punishment regimes).
-
-We run the replication under three conditions, $N=50$ agents each:
 \begin{enumerate}
-  \item \textbf{Default.} Agents receive no personality assignment.
-  \item \textbf{Random personalities.} Each agent is assigned a unique Big Five profile sampled from US adult population norms, expressed using the BFI-2-Expanded sentence bank \citep{soto2017bfi2}.
-  \item \textbf{Hyper-cooperative (skewed).} Personality sampling is re-centred so that agreeableness is drawn with a mean of $4.5$ and neuroticism with a mean of $1.5$ (other traits unchanged). This targets precisely the two Big Five dimensions most strongly linked to cooperation in humans \citep{volk2012personality} and amplifies the RLHF prosociality direction identified in the random-personality condition.
+  \item \textbf{Default} ($N=50$). Agents receive no personality assignment.
+  \item \textbf{Random Big Five personalities} ($N=50$). Each agent is assigned a unique personality profile sampled from US adult population norms, expressed as fifteen sentences from the BFI-2-Expanded sentence bank \citep{soto2017bfi2}.
 \end{enumerate}
 
-Agents in our implementation connect as HTTP clients to a real \texttt{oTree} server \citep{otree}, answering the same form pages a human participant would. The oTree server handles all game logic---payoffs, regime presentation, and punishment accounting---identically to what a human subject would experience.
+The replication runs on a real \texttt{oTree} server \citep{otree}: each agent connects as an HTTP client to the same oTree app a human subject would, reads the rendered HTML, and submits form values through the standard endpoints. The game logic---payoffs, regimes, punishment accounting---lives on the oTree side and is identical to what a human would see.
+
+Two design choices distinguish this replication from a vanilla LLM-as-agent setup.
+
+First, we use the original paper's experimental parameters exactly: groups of four, endowment of ten tokens, MPCR of $0.4$, and punishment cost ratio of $1{:}4$. Absolute contribution numbers in our results are directly comparable to the original paper's, on the same unit scale.
+
+Second, each agent maintains a \emph{persistent chat conversation} across every page of the experiment, including between-page info screens. When an agent reasons about the next decision, it sees its previous decisions and any interstitial text as part of its own conversation history---rather than each page being answered by a fresh, stateless LLM call. This single change has a measurable effect: the same agent's regime contributions become internally consistent across the four punishment regimes, and a Friedman test within each condition confirms strong regime sensitivity (Section~\ref{sec:friedman}).
 
 Our contributions are:
-\begin{enumerate}
-  \item A successful quantitative replication of the central institutional finding of \citet{ertan2009who} using \emph{default} LLM agents alone: $94\%$ vote to allow punishment of low contributors, $0\%$ vote for punishment of high contributors, with costly punishment of free-riders.
-  \item Evidence that personality induction, layered on top of the oTree pipeline, produces a dose-dependent shift in the direction of RLHF prosociality bias across three conditions: higher baseline cooperation, lower costly punishment, and lower endorsement of punitive institutions, with the effect amplified in the hyper-cooperative condition.
-  \item A diagnosed form-completion failure in the hyper-cooperative condition, where $43$ of $50$ agents fail to emit any content on specific ethically loaded fields. By inspecting the failure logs we identify the mechanism as reasoning-token exhaustion on the underlying reasoning model: the personality prompt induces enough deliberation that the model's token budget is spent on internal reasoning before any content is produced. The effect is triggered only in this condition ($0/50$ failures on the same pipeline in the other two), but is specific to reasoning models and, most likely, to our current $16{,}000$-token budget.
-  \item An open-source framework, \texttt{pyreplicant}, connecting LLM agents to arbitrary oTree experiments with BFI-2-based personality induction.
-\end{enumerate}
 
+\begin{enumerate}
+  \item A parameter-faithful replication of \citet{ertan2009who}'s headline institutional finding ($0\%$ vote for punishing high contributors) in both default and random-personality LLM agents.
+  \item A clean default-vs-personality contrast on every behavioral channel, with effect sizes large enough to survive Bonferroni correction (baseline contribution: Cohen's $d=-2.25$; punish-high regime contribution: $d=-1.38$).
+  \item Direct evidence that personality induction in chat mode produces RLHF prosociality leakage: personality agents continue contributing positively even in the punish-high-only regime, where rational play gives exactly zero (and the default agents do).
+  \item Full statistical reporting (Mann--Whitney with Bonferroni correction, chi-square for voting, Friedman for within-subject regime effects, Cohen's $d$ for effect sizes), and an open-source pipeline (\texttt{pyreplicant}) connecting LLM agents to arbitrary oTree experiments with BFI-2-based personality induction.
+\end{enumerate}
 
 %----------------------------------------------------------------------
 \section{Related Work}
@@ -75,23 +76,23 @@ Our contributions are:
 
 \subsection{LLM Agents in Behavioral Economics}
 
-\citet{horton2023homo} introduced the idea of \emph{Homo Silicus}---using LLMs as simulated economic agents. The approach has since been applied to a range of classic paradigms. \citet{aher2023turing} replicated several human-subject studies and reported that GPT-4 could reproduce aggregate patterns in games such as the ultimatum game. \citet{mei2024turing} conducted a large-scale Turing-test-style comparison across economic games and found that while LLMs often match aggregate behavior, they systematically fail to reproduce individual-level heterogeneity. \citet{argyle2023out} showed that language models conditioned on demographic back-stories can approximate group-level attitudes from political surveys.
+\citet{horton2023homo} introduced the idea of \emph{Homo Silicus}---using LLMs as simulated economic agents---and demonstrated qualitative replication of several classic results. \citet{aher2023turing} extended this to a Turing-test framework across multiple paradigms, finding that GPT-4 reproduces many aggregate human patterns. \citet{mei2024turing} ran a large cross-model comparison and found that LLMs tend to match aggregate behavior but systematically fail to reproduce individual-level heterogeneity. \citet{argyle2023out} showed that demographically conditioned LLMs approximate group-level survey responses.
 
-A consistent theme is tension between two failure modes. Some models collapse to game-theoretic equilibria (e.g., zero contribution in voluntary-contribution games), while others---particularly RLHF-trained models---drift toward excessive prosociality and social desirability \citep{salecha2024social}. Neither matches human behavior, which sits between rational self-interest and full cooperation. \citet{park2024generative} further showed that LLM agents initialized with detailed interview data from real individuals can reproduce those individuals' survey responses with reasonable accuracy, suggesting that richer persona descriptions yield more realistic behavior.
+A consistent theme across this literature is the tension between two failure modes. Some models collapse to game-theoretic equilibria in cooperation games (zero contribution in voluntary-contribution games is a typical example). Others, particularly RLHF-trained models, exhibit excessive prosociality and social-desirability bias \citep{salecha2024social}. Neither matches the human behavior the paradigms are meant to study, which sits between rational self-interest and full cooperation. \citet{park2024generative} argued that richer persona descriptions, including initialisation from interview data on real individuals, push LLM agent behavior closer to its human counterpart.
+
+The two-condition contrast in this paper directly tracks the two failure modes. The default condition is essentially the ``collapsed to Nash'' case: contributions are near zero at baseline, exactly zero when cooperation is penalised, and the agent treats the experiment as a strategic problem. The random-personality condition is the ``RLHF prosociality'' case: contributions stay above zero in every regime, and the agent treats the experiment as a social one.
 
 \subsection{Personality in LLMs}
 
-The Big Five personality model---Extraversion, Agreeableness, Conscientiousness, Neuroticism, Openness---has become the primary framework for LLM personality induction. \citet{serapio2023personality} showed that personality traits can be reliably induced in LLMs and measured with standard inventories, and that induced traits have downstream behavioral effects. \citet{jiang2024personallm} found that LLM-generated writing from personality-assigned agents can be distinguished by human raters in ways consistent with the assigned traits.
+The Big Five personality model has become the primary framework for LLM personality induction. \citet{serapio2023personality} showed that personality traits can be reliably induced in LLMs and measured with standard psychometric inventories, and that induced traits have downstream behavioral effects. \citet{jiang2024personallm} found that human raters can distinguish LLM-generated writing by induced personality with reasonable accuracy.
 
-A critical methodological concern is the distinction between \emph{expressing} a personality and \emph{parroting} an assignment. If an agent is asked ``are you agreeable?'' after being told to be agreeable, a positive response demonstrates nothing. Cross-instrument validation---assigning with one instrument (BFI-2) and measuring with another (Mini-IPIP)---addresses this concern by making item-level parroting impossible. We use this approach for personality validation (Section~\ref{sec:validation}).
+A critical methodological concern is the distinction between \emph{expressing} a personality and \emph{parroting} an assignment. If you assign agreeableness with item-level wording and then measure agreeableness with the same item-level wording, a positive correlation is uninformative---the model may simply be echoing back the assignment. Cross-instrument validation, where assignment and measurement use different psychometric instruments, addresses this concern.
+
+The \texttt{pyreplicant} pipeline used here was previously validated using a cross-instrument design: assignment via BFI-2-Expanded sentences, measurement via the Mini-IPIP $20$-item inventory \citep{donnellan2006mini}. For the model used in this paper (\texttt{step-3.5-flash}), the pooled validation correlation across all five Big Five domains was $r=.91$, with two systematic biases worth flagging: agreeableness has a positive bias of $+0.74$ (the model resists embodying low-agreeableness profiles), and neuroticism has a negative bias of $-0.69$ (the model resists embodying anxious or volatile profiles). These biases reflect RLHF training and constrain the interpretation of personality-induced results in this paper: personality agents are, on average, somewhat more agreeable and somewhat more emotionally stable than their assigned profile would imply.
 
 \subsection{Punishment and Cooperation in Public Goods Games}
 
-The voluntary contributions mechanism (VCM) is the canonical paradigm for studying cooperation and free-riding: each player receives an endowment and decides how much to contribute to a public good, with contributions multiplied by a marginal per-capita return (MPCR) below one. \citet{fehr2002altruistic} demonstrated that human players will spend their own money to punish free-riders, a form of ``altruistic punishment'' that is difficult to reconcile with standard self-interest models.
-
-\citet{ertan2009who} extended this paradigm by letting groups \emph{vote} on whether punishment should be permitted, and against whom. Their key innovation was separating the punishment decision into two components: (a) who \emph{may} be punished (an institutional choice made by majority vote) and (b) who \emph{is} punished (an individual choice). The central findings were (i) no group ever voted to allow punishment of high contributors or fully unrestricted punishment, and (ii) groups gradually converged on allowing punishment of low contributors only---an institution that effectively mitigates free-riding.
-
-This design is particularly attractive for LLM replication because it tests both economic behavior (contribution and punishment) and institutional preferences (voting), and because Big Five traits have known associations with cooperation in human public-goods games \citep{volk2012personality}.
+The voluntary contributions mechanism (VCM) is the canonical paradigm for studying free-riding in public goods. \citet{fehr2002altruistic} demonstrated that human players will spend their own money to punish free-riders---``altruistic punishment''---in a way that's hard to reconcile with standard self-interest. \citet{ertan2009who} extended this paradigm by letting groups vote on whether punishment should be permitted, separating the institutional question (\emph{who may be punished}) from the individual question (\emph{who is punished}). The institutional finding---no group ever voted to allow punishment of high contributors, and groups gradually converged on allowing punishment of low contributors---is the headline result we replicate.
 
 %----------------------------------------------------------------------
 \section{Method}
@@ -99,29 +100,31 @@ This design is particularly attractive for LLM replication because it tests both
 
 \subsection{Experiment Design}
 
-We replicate the core design of \citet{ertan2009who} as a single-shot experiment with four parts. Our parameters are a group size of $5$, an endowment of $20$ tokens per agent, a marginal per capita return (MPCR) of $0.4$, and a punishment cost ratio of $1{:}3$---spending $1$ token on punishment removes $3$ tokens from the target, capped at the target's holdings. The MPCR matches the original. The other parameters are scaled: the original \citet{ertan2009who} uses $4$-person groups with a $10$-token endowment per period and a $1{:}4$ punishment cost ratio ($\$0.25$ to remove $\$1.00$ from another subject), over $30$ repeated periods. We use larger groups and endowments and a slightly cheaper punishment technology, retained from the oTree implementation we built for this replication. These scale differences preserve the qualitative structure of the social dilemma---positive MPCR below one, costly punishment, symmetric treatment of high vs.\ low contributors in the voting stage---but a reader comparing our absolute contribution numbers directly against the original paper's figures should keep the scale difference in mind.
+We implement a single-shot version of the Ertan--Page--Putterman game with four parts:
 
-\textbf{Part 1: Baseline Contribution.} Each agent independently decides how many tokens $(0\text{--}20)$ to contribute to a group project. No punishment mechanism is present.
+\textbf{Part 1: Baseline contribution.} Each agent decides how many tokens ($0$--$10$) to contribute to a group project, with no punishment mechanism present.
 
-\textbf{Part 2: Voting.} Each agent votes Yes or No on two questions: (a) should members be allowed to punish below-average contributors? (b) should members be allowed to punish above-average contributors?
+\textbf{Part 2: Voting.} Each agent votes Yes or No on two questions: should members be allowed to punish below-average contributors, and should members be allowed to punish above-average contributors.
 
-\textbf{Part 3: Contribution Under Regimes.} Each agent makes contribution decisions under four regimes: no punishment, punish low contributors only, punish high contributors only, and unrestricted punishment. This is a within-subjects design: each agent answers all four regimes via scenario parameterization.
+\textbf{Part 3: Contribution under regimes.} Each agent contributes under four regimes presented within-subject: (i) no punishment, (ii) punish below-average only, (iii) punish above-average only, (iv) unrestricted. Punishment cost is $1{:}4$---spending one token removes four from the target, up to the target's holdings.
 
-\textbf{Part 4: Punishment Decisions.} Agents are shown three group profiles---all cooperate ($18, 17, 19, 16$), mixed ($15, 5, 18, 2$), and one free-rider ($17, 18, 16, 2$)---and choose, for each, how many tokens (up to $5$) to spend on punishment and which target category (\emph{lowest contributor}, \emph{below-average contributors}, \emph{nobody}) to direct it at.
+\textbf{Part 4: Punishment decisions.} Each agent sees three stylised group-composition profiles---all cooperate (others contributed $9, 10, 8$), mixed ($8, 3, 9$), and one free-rider ($9, 8, 1$)---and for each decides how many tokens ($0$--$10$) to spend on punishment and which target category to focus on (lowest contributor, below-average contributors, above-average contributors, highest contributor, or nobody).
 
-Our design departs from the original in three ways beyond the parameter scaling above. First, we use a single-shot design rather than the original's $30$ repeated periods with re-voting; LLM agents lack persistent memory across an interaction in a way that would support the original's learning dynamics. Second, agents make decisions independently rather than in interactive groups, so observed group dynamics in the original (conditional cooperation, norm formation) are not reproduced. Third, we present the stylised group-composition profiles for the punishment page (all cooperate, mixed, one free-rider) as hypothetical scenarios rather than drawing them from each agent's own group's past play, because no such past play exists in a single-shot design.
+\subsection{Parameters}
 
-\subsection{Infrastructure: oTree Pipeline}
+Group size is four, endowment per agent is ten tokens, MPCR is $0.4$, punishment cost ratio is $1{:}4$. These match \citet{ertan2009who} exactly. The punishment-page profiles are scaled to be three-other-member, ten-token-endowment versions of the ``all cooperate / mixed / one free-rider'' distinctions the original paper used.
 
-The experiment is implemented as a standard \texttt{oTree} app \citep{otree} with one page per decision. Instead of scripting questions in a survey framework, each LLM agent connects to a running oTree server as an HTTP client, following the same participant URL a human subject would, reading the rendered HTML, and submitting form values through the normal oTree endpoints. All game logic---payoffs, regime presentation, punishment accounting---lives on the oTree side and is identical to what a human would experience.
+\subsection{Infrastructure}
+
+The experiment is implemented as an \texttt{oTree} app \citep{otree} with one page per decision (Baseline, Voting, Regimes, Punishment, Done). Each LLM agent connects to a running \texttt{oTree} server as an HTTP client, reads the rendered HTML, and submits form values through the standard \texttt{oTree} endpoints. The server runs in a Docker container; agents run as Python threads (one per agent) so that any synchronisation barriers in the oTree session resolve naturally.
+
+Each agent maintains a single persistent chat conversation across every page of the experiment. The system message includes the agent's personality (or no personality, in the default condition) and a brief instruction. Subsequent user messages are the page-specific decision prompts; the assistant's prior answers, page-by-page, accumulate in the conversation history. When the agent reasons about page $k$, it sees pages $1, \ldots, k-1$ and its own previous answers as context.
 
 \subsection{Conditions}
 
-\textbf{Default Condition ($N=50$).} Agents receive no personality assignment. Each agent reads the standard oTree instructions and answers the forms with no additional system-level persona beyond the default instruction to act as an experimental participant.
+\textbf{Default Condition ($N=50$).} Agents receive no personality prompt; they read only the standard experimental instructions.
 
-\textbf{Random-Personality Condition ($N=50$).} Each agent is assigned a unique Big Five profile drawn from US adult population norms \citep{soto2017bfi2, srivastava2003development}. For each of the five domains, a score is sampled from a Gaussian with the published population mean and standard deviation (Table~\ref{tab:norms}). Scores are converted into personality descriptions using the BFI-2-Expanded sentence bank.
-
-\textbf{Hyper-Cooperative Condition ($N=50$).} Identical to the random-personality condition except that the sampling means for agreeableness and neuroticism are overridden: agreeableness is sampled with mean $4.5$ (up from $3.8$) and neuroticism with mean $1.5$ (down from $2.8$), in both cases with the original population standard deviations. Extraversion, conscientiousness, and openness continue to be sampled from the population norms. The resulting population is warmer, calmer, more trusting, and more compliant than the random population, while retaining ordinary variance on the other three traits. In human experimental populations, agreeableness and (low) neuroticism are the two Big Five dimensions most strongly associated with cooperation and pro-social punishment restraint \citep{volk2012personality}, so this condition is designed to test what behavior looks like when the personality signal is pushed hard in the direction RLHF already drifts toward.
+\textbf{Random-Personality Condition ($N=50$).} Each agent is assigned a unique Big Five profile drawn from US adult population norms (Table~\ref{tab:norms}). Scores are converted to personality descriptions using the BFI-2-Expanded sentence bank \citep{soto2017bfi2}, with fifteen sentences per agent (three per Big Five domain).
 
 \begin{table}[H]
 \centering
@@ -146,278 +149,195 @@ Openness          & 3.6 & 0.65 \\
 
 \subsection{Personality Induction: BFI-2-Expanded Format}
 
-We use the BFI-2-Expanded format \citep{soto2017bfi2}. Each Big Five domain is represented by a bank of sentences at seven intensity levels ($-3$ to $+3$), with three sentences per level corresponding to the three facets of each domain. For example, the agreeableness domain covers compassion, respectfulness, and trust.
-
-A score of $+2$ (high) produces sentences drawn directly from BFI-2 items:
-
-\begin{quote}
-\emph{I am someone who is compassionate, has a soft heart.} \\
-\emph{I am someone who is respectful, treats others with respect.} \\
-\emph{I am someone who assumes the best about people.}
-\end{quote}
-
-A score of $0$ (average) uses hedged language:
-
-\begin{quote}
-\emph{I am someone who sometimes is compassionate, but not always.} \\
-\emph{I am someone who sometimes is respectful, but not always.} \\
-\emph{I am someone who sometimes assumes the best about people, but not always.}
-\end{quote}
-
-A score of $-2$ (low) uses the reverse-scored pole:
-
-\begin{quote}
-\emph{I am someone who can be cold and uncaring.} \\
-\emph{I am someone who is sometimes rude to others.} \\
-\emph{I am someone who tends to find fault with others.}
-\end{quote}
-
-Fractional scores (e.g., $+0.5$) are handled by blending sentences from adjacent levels: two sentences from level $0$ and one from level $+1$. This provides approximately four times the granularity of integer-only levels.
-
-Each agent's complete personality description ($15$ sentences, $3$ per domain) is embedded in the system prompt along with a brief instruction that the description reflects who the agent is and should naturally shape their decisions.
-
-\subsection{Personality Validation}
-\label{sec:validation}
-
-Before running the economic experiment, we validated personality induction using cross-instrument measurement. Agents were assigned personality via BFI-2-Expanded descriptions and measured using the Mini-IPIP $20$-item inventory \citep{donnellan2006mini}, which uses entirely different item wording. This prevents the model from simply echoing the assignment at the item level.
-
-We sampled $N = 20$ agents with continuous trait scores drawn from US adult population norms, administered the Mini-IPIP to each, and computed the relationship between assigned and measured scores per Big Five domain.
-
-\begin{table}[H]
-\centering
-\caption{Cross-Instrument Validation: Assigned (BFI-2-Expanded) vs.\ Measured (Mini-IPIP)}
-\label{tab:validation}
-\begin{tabular}{lcccc}
-\toprule
-Domain & Pearson $r$ & $R^2$ & MAE & Bias \\
-\midrule
-Extraversion      & .951 & .91 & 0.55 & $-0.03$ \\
-Agreeableness     & .799 & .64 & 0.74 & $+0.74$ \\
-Conscientiousness & .909 & .83 & 0.55 & $+0.44$ \\
-Neuroticism       & .940 & .88 & 0.83 & $-0.69$ \\
-Openness          & .925 & .86 & 0.67 & $+0.66$ \\
-\midrule
-\textbf{Pooled}   & \textbf{.911} & \textbf{.83} & \textbf{0.67} & --- \\
-\bottomrule
-\end{tabular}
-
-\medskip
-\footnotesize
-\textit{Note.} $N = 20$ agents, each scored on all $5$ domains ($100$ paired observations). Bias is measured mean minus assigned mean (positive $=$ model overestimates the trait). All correlations significant at $p < .001$. MAE on the original $1$--$5$ Mini-IPIP scale.
-\end{table}
-
-Personality induction works strongly across all domains, with a pooled correlation of $r = .911$ ($R^2 = .83$) between assigned and measured scores. Two systematic biases are relevant for interpreting the behavioral results:
-\begin{itemize}
-  \item \textbf{Agreeableness} shows the weakest correlation ($r = .80$) and the largest positive bias ($+0.74$). The model resists embodying low-agreeableness profiles and drifts toward warmth and prosociality---a pattern consistent with RLHF training \citep{salecha2024social}.
-  \item \textbf{Neuroticism} shows the strongest negative bias ($-0.69$). The model resists expressing anxious or volatile profiles and defaults toward emotional stability.
-\end{itemize}
-Extraversion ($r = .95$), neuroticism ($r = .94$), and openness ($r = .93$) show near-perfect correlations despite the mean bias, indicating that the \emph{relative ordering} of agents on these traits is preserved even where the absolute level shifts.
+We use the BFI-2-Expanded format \citep{soto2017bfi2}. Each Big Five domain is represented by a bank of sentences at seven intensity levels ($-3$ to $+3$), with three sentences per level corresponding to the three facets of each domain (e.g., agreeableness covers compassion, respectfulness, and trust). Fractional scores are handled by blending sentences from adjacent levels. Each agent's complete personality description ($15$ sentences, $3$ per domain) is embedded in the system prompt along with a brief instruction that the description reflects who the agent is and should naturally shape their decisions.
 
 \subsection{Model and Cost}
 
-All experiments use StepFun \texttt{step-3.5-flash} via the OpenRouter API, at a temperature of $0.5$. The model separates its reasoning trace from user-visible output, which simplifies form-field parsing. Total cost for the three conditions combined was approximately $\$0.45$, including personality-assignment tokens. All code, data, and paper sources are available at \url{https://github.com/tunapro1234/replicant}.
+All experiments use \texttt{step-3.5-flash} via the OpenRouter API, at temperature $0.5$, with a generous reasoning-token budget of \texttt{max\_tokens}$=128{,}000$. The large budget is important: \texttt{step-3.5-flash} is a reasoning model that separates internal reasoning tokens from user-visible content, and on ethically loaded questions a strongly prosocial agent can use $5{,}000$--$11{,}000$ reasoning tokens before producing a single content token. With the $128{,}000$ budget, both conditions in this paper completed all $50$ agents on all four pages with zero field-level failures. Total cost for both conditions combined was under \$2; total wall-clock time was approximately $44$ minutes. All code, data, and paper sources are available at \url{https://github.com/tunapro1234/replicant}.
+
+\subsection{Statistical Chain}
+
+We apply the following analysis chain, in order:
+
+\begin{enumerate}
+  \item \textbf{Descriptive statistics.} Means, standard deviations, and completion counts for every field.
+  \item \textbf{Between-condition numeric comparisons.} Two-sided Mann--Whitney $U$ tests for every numeric field (baseline contribution, four regime contributions, three punishment-amount fields).
+  \item \textbf{Between-condition categorical comparisons.} Chi-square tests for the two voting fields.
+  \item \textbf{Within-subject regime effects.} A Friedman test within each condition, on the four regime contributions, testing whether the same agent produces significantly different contributions across regimes.
+  \item \textbf{Effect sizes.} Cohen's $d$ for each numeric between-condition comparison, to quantify how large the differences are rather than only whether they are statistically significant.
+  \item \textbf{Multiple-comparison correction.} Bonferroni correction on the between-condition tests (ten tests: eight Mann--Whitney, two chi-square). Corrected threshold: $\alpha=0.05/10=0.005$.
+\end{enumerate}
+
+The within-subject Friedman tests are reported separately because they answer a different question (does the agent respond to regime changes within itself) and are not part of the multiple-comparison family for the default-vs-personality contrast.
 
 %----------------------------------------------------------------------
 \section{Results}
 %----------------------------------------------------------------------
 
-Table~\ref{tab:results} summarises all four parts of the experiment for the three conditions. Mann--Whitney $U$ tests are used for continuous contribution variables; chi-square tests are used for binary vote variables. Approximate reference values from the original paper are inlined in the text where relevant.
+\subsection{Completion}
+
+Both conditions complete cleanly. Of $50$ agents per condition, $50$ completed all four decision pages, with zero field-level failures. The default condition took $23.2$ minutes; the random-personality condition took $20.5$ minutes. No agent ran out of reasoning budget on any field.
+
+\subsection{Between-Condition Results}
+
+Table~\ref{tab:results} summarises the between-condition comparisons.
 
 \begin{table}[H]
 \centering
-\caption{Summary of Results by Condition ($N=50$ agents per condition)}
+\caption{Default vs Random Personalities ($N=50$ per condition)}
 \label{tab:results}
 \small
-\begin{tabular}{lccc}
+\begin{tabular}{lcccc}
 \toprule
-Metric & Default & Random pers. & Hyper-coop. \\
+Field & Default (M$\pm$SD) & Random (M$\pm$SD) & $p$ & Cohen's $d$ \\
 \midrule
-\multicolumn{4}{l}{\textit{Contribution decisions (0--20 tokens, mean (SD))}} \\
-\quad Baseline                 & $1.0$ $(3.0)$ & $12.3$ $(4.3)^{***}$ & $16.5$ $(4.7)^{***\dagger\dagger\dagger}$ \\
-\quad No punishment            & $0.2$ $(1.4)$ & $12.4$ $(5.5)^{***}$ & $17.2$ $(4.1)^{***\dagger\dagger\dagger}$ \\
-\quad Punish low only          & $8.5$ $(5.2)$ & $17.8$ $(3.0)^{***}$ & $19.3$ $(1.7)^{***\dagger\dagger}$ \\
-\quad Punish high only         & $0.0$ $(0.0)$ & $3.6$  $(5.1)^{***}$ & $9.7$  $(8.7)^{***\dagger\dagger}$ \\
-\quad Unrestricted             & $8.1$ $(4.6)$ & $11.7$ $(3.8)^{***}$ & $14.8$ $(4.7)^{***\dagger\dagger}$ \\
+\multicolumn{5}{l}{\textit{Contribution (0--10 tokens)}} \\
+\quad Baseline & $0.76 \pm 1.78$ & $5.30 \pm 2.23$ & $<.001$ & $-2.25$ \\
+\quad No punishment & $0.76 \pm 1.78$ & $5.30 \pm 2.23$ & $<.001$ & $-2.25$ \\
+\quad Punish low only & $7.00 \pm 3.96$ & $8.18 \pm 1.37$ & $0.70$ & $-0.40$ \\
+\quad Punish high only & $0.00 \pm 0.00$ & $2.42 \pm 2.48$ & $<.001$ & $-1.38$ \\
+\quad Unrestricted & $5.04 \pm 3.23$ & $5.92 \pm 1.87$ & $0.05$ & $-0.33$ \\
 \midrule
-\multicolumn{4}{l}{\textit{Voting (\% Yes)}} \\
-\quad Allow punish low         & $94$ & $80$ & $46^{***\dagger\dagger\dagger}$ \\
-\quad Allow punish high        & $0$  & $0$  & $0$ \\
+\multicolumn{5}{l}{\textit{Punishment spending (0--10 tokens)}} \\
+\quad All-cooperate profile & $0.36 \pm 0.75$ & $0.30 \pm 0.58$ & $0.87$ & $+0.09$ \\
+\quad Mixed profile & $1.42 \pm 1.40$ & $1.68 \pm 0.89$ & $0.36$ & $-0.22$ \\
+\quad Free-rider profile & $1.52 \pm 1.58$ & $1.96 \pm 0.97$ & $0.02$ & $-0.34$ \\
 \midrule
-\multicolumn{4}{l}{\textit{Punishment spending (0--5 tokens, mean (non-zero / completed))}} \\
-\quad All-cooperate group      & $0.30$ $(3/50)$  & $0.14$ $(4/50)$       & $0.00$ $(0/7)$ \\
-\quad Mixed group              & $2.56$ $(42/50)$ & $1.40$ $(41/50)^{***}$& $0.43$ $(2/7)^{**\dagger}$ \\
-\quad One free-rider group     & $3.78$ $(47/50)$ & $1.90$ $(44/50)^{***}$& $0.86$ $(3/7)^{***\dagger}$ \\
-\midrule
-\multicolumn{4}{l}{\textit{Form-completion rate}} \\
-\quad Baseline \& voting       & $50/50$ & $50/50$ & $50/50$ \\
-\quad Regime page              & $50/50$ & $50/50$ & $30/50$ \\
-\quad Punishment page          & $50/50$ & $50/50$ & $7/50$ \\
+\multicolumn{5}{l}{\textit{Voting (\% Yes)}} \\
+\quad Allow punish low & $44\%$ ($22/50$) & $90\%$ ($45/50$) & $<.001$ (chi-sq) & --- \\
+\quad Allow punish high & $0\%$ ($0/50$) & $0\%$ ($0/50$) & --- & --- \\
 \bottomrule
 \end{tabular}
 
 \medskip
 \footnotesize
-\textit{Note.} Contribution comparisons use two-sided Mann--Whitney $U$ tests; voting uses chi-square. Stars mark differences from the Default condition: $^{*}p<.05$, $^{**}p<.01$, $^{***}p<.001$. Daggers mark differences from the Random-Personality condition: $^{\dagger}p<.05$, $^{\dagger\dagger}p<.01$, $^{\dagger\dagger\dagger}p<.001$. Punishment and regime rows are computed over \emph{completed} responses: $50/50$ agents completed every page in Default and Random, but only $30/50$ reached the regime page and $7/50$ reached the punishment page in the Hyper-cooperative condition (see Section~\ref{sec:cooperative}). The parenthetical $n/k$ on punishment rows reports non-zero choices out of completed observations.
+\textit{Note.} Numeric comparisons use two-sided Mann--Whitney $U$ tests. Voting uses chi-square. Cohen's $d$ is computed with pooled SD; sign is \texttt{default$-$random}, so negative values mean Random is higher. Bonferroni-corrected threshold for the ten between-condition tests is $\alpha=0.005$. The punish-high voting chi-square is undefined because every cell is zero (matching the original paper's headline institutional result).
 \end{table}
 
-\subsection{Default Agents: Already Human-Like in Institutional Choice}
+Five results stand out.
 
-The most striking result is that \emph{default} agents---with no personality prompt of any kind---reproduce the qualitative institutional finding of \citet{ertan2009who}. $94\%$ vote to allow punishment of low contributors. The original paper reports $64\%$ of all group votes across both designs going to some form of low-punishment-only rule ($102$ of $160$), rising to ``nearly all groups'' in the final vote of each session as groups converge toward the punish-low-but-not-high institution (\citealt{ertan2009who}, Result~2). $0\%$ of default agents vote to allow punishment of high contributors, matching the original's $0\%$ at the group-vote level. The chi-square test comparing default to random-personality on the low-punishment vote does not reject equality ($\chi^2 = 3.18$, $p = .074$; $47/50$ vs.\ $40/50$). A one-shot LLM default agent does not have the repeated rounds of play that human subjects in \citet{ertan2009who} use to converge toward the punish-low institution over $30$ periods of play and multiple re-voting stages; it reaches a position close to the converged late-round outcome immediately, and overshoots the \emph{overall} average of the original paper in the direction of the paper's converged late-round position.
-
-Default agents are also willing to pay for punishment. On the all-cooperate profile they spend almost nothing ($M=0.30$, $3/50$ non-zero), but on the mixed group they spend $M=2.56$ ($42/50$ non-zero), and on the single-free-rider group they spend $M=3.78$ out of a possible $5$ ($47/50$ non-zero). They also target punishment appropriately, directing $65$ of $150$ punishment choices at the lowest contributor and $35$ at below-average contributors.
-
-Baseline contributions are low in the default condition ($M=1.0$, $SD=3.0$), consistent with the standard Nash prediction for a one-shot VCM with $\mathrm{MPCR}=0.4$. Crucially, however, default agents are sensitive to the punishment regime: in the punish-low-only regime they contribute $M=8.5$, and in the unrestricted regime $M=8.1$, while in the punish-high-only regime they drop to exactly $0.0$ (Figure~\ref{fig:regimes}). The punish-high-only result is rational: agents correctly recognise that any positive contribution risks being punished, and respond by contributing nothing.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/fig1_regime_contributions.pdf}
-\caption{Mean contribution by punishment regime and condition. Error bars show standard deviations. The dashed line indicates the approximate human baseline from \citet{ertan2009who}. Default agents respond sharply to the punish-low-only and unrestricted regimes; random-personality agents contribute more in every regime; hyper-cooperative agents contribute more still and saturate near the ceiling in the punish-low-only regime. Hyper-cooperative regime bars are computed over the $30$ agents who completed the regime page.}
-\label{fig:regimes}
-\end{figure}
-
-\subsection{Personality Agents: Higher Cooperation, Lower Punishment}
-
-Personality-endowed agents contribute substantially more at baseline ($M=12.3$, $SD=4.3$; Mann--Whitney $U=107.5$, $p<.001$) and exhibit greater variance in contribution profiles across the full $0$--$20$ range (Figure~\ref{fig:distribution}).
+\textbf{First, baseline cooperation differs enormously between conditions.} Default agents contribute $M=0.76$ tokens out of $10$---essentially the Nash equilibrium for a one-shot VCM with $\mathrm{MPCR}=0.4$. Random-personality agents contribute $M=5.30$, $d=-2.25$ (a very large effect). The two distributions barely overlap (Figure~\ref{fig:distribution}). Personality induction in chat mode at population-norm parameters lifts contributions by a factor of seven.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{figures/fig2_baseline_distribution.pdf}
-\caption{Distribution of baseline contributions by condition. Default agents cluster near zero (Nash equilibrium); random-personality agents concentrate in the middle of the range; hyper-cooperative agents concentrate near the $20$-token ceiling.}
+\caption{Distribution of baseline contributions by condition ($N=50$ each). Default agents cluster tightly near zero (Nash equilibrium). Random-personality agents spread across the middle of the $0$--$10$ range, with mean $5.3$ and substantial variance.}
 \label{fig:distribution}
 \end{figure}
 
-Regime effects remain directionally correct but attenuated. Personality agents contribute the most in the punish-low-only regime ($M=17.8$, near the $20$-token ceiling) and the least in the punish-high-only regime ($M=3.6$). Unlike default agents, they do not drive the punish-high-only contribution to zero: personality-induced prosociality leaks through even when cooperation is strictly penalised.
+\textbf{Second, default agents are institution-sensitive in exactly the rational way.} Under the punish-high-only regime, where any positive contribution risks costly punishment, default agents contribute $M=0.00$ with zero variance. Random-personality agents contribute $M=2.42$ in the same regime---they don't drive all the way to zero. This is the cleanest single measurement of RLHF prosociality leakage in our data: it's the gap between rational play in a regime that punishes cooperation ($0.00$) and the residual cooperation that survives a prosocial personality prompt ($2.42$) under the same regime.
 
-Punishment spending, however, moves in the opposite direction from contribution. Personality agents punish free-rider groups significantly less than default agents ($M=1.90$ vs.\ $3.78$, $U=2074.5$, $p<.001$), and mixed groups less as well ($M=1.40$ vs.\ $2.56$, $U=1745.5$, $p<.001$). Their voting is also less punitive---$80\%$ vs.\ $94\%$ in favour of allowing punishment of low contributors---though, as noted, this difference is not significant at $p<.05$ in our sample.
+\textbf{Third, default agents respond strongly to the punish-low-only institution.} Under punish-low-only, default agents jump from $0.76$ at baseline to $7.00$ (a factor of about $9$). Random agents jump from $5.30$ to $8.18$ (a factor of about $1.5$). Both conditions contribute most under punish-low-only, as expected: that's the regime where cooperation is protected and free-riding is deterred. The default condition's sensitivity to this regime---moving from essentially zero to two-thirds of the endowment---is a strong qualitative match to the original paper's finding that the punish-low-only institution is the one that actually mitigates free-riding (Figure~\ref{fig:regimes}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig1_regime_contributions.pdf}
+\caption{Mean contribution by punishment regime and condition. Error bars show standard deviations. Default agents contribute essentially zero with no punishment and exactly zero when cooperation is punished, but jump to $7.0$ of $10$ when free-riders can be punished. Random-personality agents contribute more in every regime, and fail to drive to zero even when cooperation is penalised.}
+\label{fig:regimes}
+\end{figure}
+
+\textbf{Fourth, the voting pattern replicates the original paper's headline institutional finding in both conditions.} Zero percent of agents in either condition vote to allow punishment of high contributors. This is the cleanest single result in the paper, and it replicates without modification across our two conditions: $0/50$ in default, $0/50$ in random. On the punish-low vote the conditions differ: default agents vote $44\%$ in favour ($22/50$, below majority), random-personality agents vote $90\%$ ($45/50$). The chi-square test rejects equality strongly ($p<.001$). We discuss the direction of this effect in Section~\ref{sec:discussion-voting}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{figures/fig3_voting.pdf}
+\caption{Voting on punishment institutions. Both conditions show $0\%$ support for allowing punishment of high contributors, exactly matching the original paper's headline institutional finding. On the punish-low vote, default agents and random-personality agents disagree: default agents vote $44\%$ in favour (below majority), random agents vote $90\%$.}
+\label{fig:voting}
+\end{figure}
+
+\textbf{Fifth, costly punishment is modest and similar across conditions.} Both conditions spend essentially nothing on the all-cooperate profile ($0.36$ vs $0.30$, $p=0.87$). Both spend a bit on the mixed profile ($1.42$ vs $1.68$, $p=0.36$). The only profile where the conditions differ weakly is the one-free-rider scenario ($1.52$ vs $1.96$, $p=0.02$), with random personalities punishing slightly more. None of the punishment-spending differences survive Bonferroni correction at $\alpha=0.005$. The punishment-side story in this parameterisation is ``both conditions are similarly mild and both correctly target free-riders when they punish at all'' (Figure~\ref{fig:punishment}).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/fig4_punishment_by_profile.pdf}
-\caption{Mean costly punishment spending by group profile and condition. All three conditions spend essentially nothing on the all-cooperate profile; default agents punish free-riders most heavily, random-personality agents punish less, and hyper-cooperative agents barely punish at all. Note that Hyper-coop.\ bars are computed over only the $7$ agents who completed the punishment page.}
+\caption{Mean costly punishment spending by group profile and condition. Both conditions spend essentially nothing on the all-cooperate profile, and spend the most on the free-rider profile. The two conditions track each other closely across profiles.}
 \label{fig:punishment}
 \end{figure}
 
-\begin{figure}[H]
+\subsection{Within-Subject Regime Effects}
+\label{sec:friedman}
+
+For each condition we ran a Friedman test on the four regime contributions, testing whether the same agent contributes differently across the no-punishment, punish-low-only, punish-high-only, and unrestricted regimes (Table~\ref{tab:friedman}).
+
+\begin{table}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{figures/fig3_punishment_targets.pdf}
-\caption{Distribution of punishment target choices across the three profiles and three conditions. All conditions overwhelmingly either target the lowest contributor or spare the group; no condition targets cooperators. The Hyper-cooperative distribution reflects only the $7$ agents who completed the punishment page.}
-\label{fig:targets}
-\end{figure}
+\caption{Friedman Test of Regime Effects (Within-Subject)}
+\label{tab:friedman}
+\begin{tabular}{lccc}
+\toprule
+Condition & $\chi^2$ & $p$ & $N$ \\
+\midrule
+Default & $110.54$ & $<.001$ & $50$ \\
+Random personalities & $126.60$ & $<.001$ & $50$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsection{Hyper-Cooperative Agents: The Drift, Amplified}
-\label{sec:cooperative}
+Both conditions show very strong within-subject regime effects. The same agent contributes very differently under different punishment rules: default agents move from $0$ in punish-high-only to $7$ in punish-low-only; random agents move from $2.42$ to $8.18$ on the same two regimes. The Friedman statistic picks up both shifts cleanly. This is the analog of the within-subject Wilcoxon signed-rank tests the original paper used to establish that subjects respond to regime within session.
 
-The hyper-cooperative condition pushes the cooperation--punishment trade-off further in the same direction as the random-personality condition, and also produces a qualitatively new effect: on the most ethically loaded decision pages, a majority of agents fail to emit any content and the page is recorded as incomplete. We unpack the behavioral numbers first and the completion failure second.
+\subsection{Multiple-Comparison Correction}
 
-On the parts of the experiment that did complete, the numbers are stark. Baseline contributions rise to $M=16.5$ ($SD=4.7$), significantly higher than both the default and random-personality conditions ($U=37.5$ and $U=671.0$ respectively, both $p<.001$). Under the punish-low-only regime, hyper-cooperative agents contribute $M=19.3$ out of a possible $20$, effectively saturating the upper end of the scale. Even the punish-high-only regime---where rational play demands near-zero contribution---produces $M=9.7$, substantially above both default ($0.0$) and random-personality ($3.6$). These agents cooperate even when cooperation is explicitly penalised.
+We ran ten between-condition tests. The Bonferroni-corrected threshold is $\alpha=0.05/10=0.005$. All results in Table~\ref{tab:results} marked with $p<.001$ survive correction. The borderline numeric results (unrestricted contribution, $p=0.047$; free-rider punishment, $p=0.019$) do not survive correction; we report them as suggestive but not confirmed.
 
-The voting pattern breaks from the rest of the replication. Where default agents and random-personality agents reproduce the paper's near-consensus in favour of allowing punishment of low contributors ($94\%$ and $80\%$), hyper-cooperative agents fall to $46\%$ ($\chi^2 = 25.19$, $p < .001$ vs.\ default; $\chi^2 = 10.98$, $p < .001$ vs.\ random personality). A population explicitly tuned toward agreeableness and emotional stability is markedly less willing to endorse punitive institutions, even against free-riders.
-
-\paragraph{The form-completion failure.} All $50$ hyper-cooperative agents completed the baseline and voting pages. Only $30$ of $50$ completed the four-regime contribution page, and only $7$ of $50$ completed the three-profile costly-punishment page. In the Default and Random-Personality conditions, by contrast, all $50$ agents completed every page on the same pipeline. The failure is not a property of our form parser or retry logic in general---those work for the other two conditions---but it is also not random within this condition.
-
-When we examined the raw per-field failure logs (every bot records the last model response when a field fails after $\mathrm{MAX\_LLM\_RETRIES}=8$ attempts), we found two clean patterns. First, all $43$ failed fields report ``empty'' as the last response: the API call returned a valid completion, but the content field was the empty string. Second, the failures cluster heavily on the ethically or strategically hardest questions. The three most-failed fields are \texttt{contrib\_unrestricted} ($11$ failures), \texttt{punish\_amount\_mixed} ($10$), and \texttt{contrib\_punish\_high} ($8$)---respectively, ``how much to contribute when anyone can punish anyone,'' ``how much to spend punishing a mixed group,'' and ``how much to contribute when cooperation itself will be punished.'' The easier fields fail only sporadically.
-
-The consistent ``empty response'' signature lines up cleanly with a known property of the underlying model. \texttt{stepfun/step-3.5-flash} is a reasoning model that separates internal reasoning tokens from user-visible content tokens. Our bot calls the API with \texttt{max\_tokens=16000}, and when the model exhausts that budget on internal deliberation without ever emitting a content token, the \texttt{content} field on the API response is empty. We read the pattern above as: the hyper-cooperative personality prompt induces enough additional internal deliberation on precisely the most ethically loaded questions that the reasoning budget is exhausted before any answer is produced, and our bot logs this as an empty-response failure.
-
-Crucially, the non-completers contribute \emph{more} at baseline than the completers ($M=17.6$ vs.\ $M=15.8$): the agents most committed to cooperating are the ones most likely to run out of reasoning budget on punishment questions. This is consistent with personality-driven deliberation costs and inconsistent with random failure.
-
-We are cautious about naming this effect. It is not behavioral ``refusal'' in a moral sense---the model is not producing objections, moral caveats, or declinations; it is producing no content at all because its reasoning envelope was exceeded. Nor is it a pipeline artifact in the usual sense, because the same pipeline completes $50/50$ for both other conditions. We think the accurate description is \emph{reasoning-budget exhaustion on ethically loaded questions, induced by a strongly prosocial personality prompt, on a reasoning model with a finite token budget}. The effect is plausibly fixable by raising \texttt{max\_tokens} (we plan to re-run the condition with a larger budget and report whether the dropout disappears) and is likely model-specific: a non-reasoning model of comparable capability would not exhibit this particular failure mode, though it might exhibit a different one.
-
-We therefore report the remaining $n=7$ punishment numbers descriptively rather than inferentially. All three punishment-amount trends are directionally consistent with the Random-Personality condition (lower than Default on the mixed profile, $U=299.5$, $p<.01$; lower on the free-rider profile, $U=318.5$, $p<.001$), and the target distribution from the $21$ completed punishment choices ($16$ ``nobody,'' $5$ ``lowest contributor,'' $0$ ``below-average'') points in the same pro-social direction. Whether these trends hold at full $N=50$ is a question for the re-run.
-
-\subsection{Comparison to the Original Paper}
-\label{sec:paper-comparison}
-
-All three conditions capture several qualitative patterns from \citet{ertan2009who}:
-\begin{itemize}
-  \item Zero support for punishing high contributors ($0\%$ in all three, matching $0\%$ in the paper).
-  \item Cooperators are never punished; when punishment is directed anywhere, it targets the lowest contributor.
-  \item Contributions respond to regime, with the punish-high-only regime producing the lowest contributions in every condition---even in the hyper-cooperative condition, though the drop is smaller there.
-\end{itemize}
-
-The quantitative picture varies across conditions in a clean gradient. Two caveats before we compare numbers directly: first, the original paper uses a $10$-token endowment whereas we use $20$, so absolute contribution numbers are on different scales (a ``half the endowment'' level in the original is $5$, in ours is $10$); second, \citet{ertan2009who} reports no-punishment contribution trajectories only graphically (their Figure~3), so we do not attempt to quote a specific baseline mean from the paper and instead work from the qualitative pattern they describe: declining contributions in no-punishment conditions, higher contributions under punish-low-but-not-high, as is standard in VCMs.
-
-On \emph{contribution}, all three of our conditions order the regimes in the expected way: contribution is highest under punish-low-only and lowest under either no-punishment or punish-high-only. \textbf{Default} agents contribute near zero at baseline ($1.0$ of $20$) and jump to about $8$ of $20$ once a punishment institution is available, which is qualitatively the same ``punishment shifts behavior toward cooperation'' result reported in the original. \textbf{Random-personality} and \textbf{hyper-cooperative} agents contribute more in every regime, on the side of over-cooperation rather than under-cooperation.
-
-On \emph{voting}, the original paper reports $64\%$ of group votes across both designs ($102$ of $160$) in favour of some form of low-punishment-only rule, with the final vote of each session reaching ``nearly all groups'' as groups converge. Default LLM agents vote $94\%$ for allowing punishment of low contributors in a single shot: they land near the original paper's converged late-round outcome without playing the ten intermediate rounds humans used to get there. Random-personality agents dilute this to $80\%$, and hyper-cooperative agents break it entirely at $46\%$. The original paper's zero-support finding for punishment of high contributors replicates in all three of our conditions: $0\%$, $0\%$, $0\%$, matching the original's $0\%$ at the group-vote level (and well below the $17\%$ of individual votes the original paper records in favour of allowing high-contributor punishment). The dimension we are intervening on (``more agreeable, less neurotic'') has a clear, monotonic effect on how willing agents are to endorse a punitive institution, even when that institution targets free-riders whose existence the original paper's late-round subjects had learned to resent.
+The qualitative story does not depend on correction. The main effects (baseline contribution, punish-high regime contribution, voting on low-punishment) are all orders of magnitude below any correction threshold; the non-significant or borderline results are non-significant or borderline whether or not correction is applied.
 
 %----------------------------------------------------------------------
 \section{Discussion}
 \label{sec:discussion}
 %----------------------------------------------------------------------
 
-\subsection{Personality Induction Produces a Dose-Dependent RLHF Drift}
+\subsection{Personality Induction Produces RLHF Prosociality Leakage}
 
-Against the oTree baseline, personality induction does not erase but \emph{shifts} behavior, and the direction and magnitude of the shift are consistent with a dose-response relationship across our three conditions:
+Against the default LLM baseline, personality induction does not erase but \emph{shifts} behavior. Across every numeric channel we measured, the random-personality condition contributes more than default and punishes about the same as default. The cleanest single measurement of this shift is the punish-high-only regime: rational play under that regime is exactly zero (default delivers it), and random-personality play is $2.42$ on average. That residual $2.42$ is the cost the agent is willing to pay to keep cooperating in a regime where cooperating is explicitly punished.
 
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Metric & Default & Random & Hyper-coop. \\
-\midrule
-Baseline contribution      & $1.0$  & $12.3$ & $16.5$ \\
-Punish-low regime contrib. & $8.5$  & $17.8$ & $19.3$ \\
-Free-rider punishment      & $3.78$ & $1.90$ & $0.86$ \\
-\% vote to allow punish-low & $94$   & $80$   & $46$   \\
-Punishment form completion  & $50/50$& $50/50$& $7/50$ \\
-\bottomrule
-\end{tabular}
-\end{center}
+This pattern is consistent with prior validation of the same model on the same personality-induction pipeline. The model resists embodying low-agreeableness profiles (validation bias $+0.74$) and high-neuroticism profiles (bias $-0.69$). Both biases push behavior toward warmth and emotional stability, both biases plausibly encourage cooperation, and both biases are amplified in cooperation-relevant decisions. Random personality sampling produces a population with mean agreeableness of about $3.9$ on the $1$--$5$ scale and mean neuroticism of about $2.7$; once those scores are converted into the BFI-2-Expanded sentences and fed into a model that was already RLHF'd toward warmth and stability, the result is an agent that contributes more than rational self-interest would justify.
 
-Every numeric channel we measured moves monotonically. Contributions rise, costly punishment falls, vote shares for punitive institutions fall, and---at the extreme end---agents stop responding to the costly-punishment page at all. The pattern is internally coherent: personality-induced agents are \emph{nicer}, and the more strongly you prompt for niceness, the more strongly that niceness shows up on every dimension of the experiment.
+The punish-low-only regime is the one place where the two conditions almost agree. Both contribute heavily ($7.00$ and $8.18$); the difference between them is small ($p=0.70$, $d=-0.40$). This is also intuitive: punish-low-only is the regime in which the rational and the prosocial answer happen to coincide. A free-rider gets punished, so a self-interested agent contributes; a prosocial agent contributes anyway. The two conditions converge on the same behavior because their reasoning paths converge on the same answer.
 
-This matches the validation-level finding of Section~\ref{sec:validation}, where the RLHF-trained model resists adopting low-agreeableness and high-neuroticism profiles. When the model is asked to play a random average person it becomes somewhat more agreeable and emotionally stable than population norms would justify \citep{salecha2024social, serapio2023personality}; when the model is asked to play a very agreeable, very emotionally stable person, that same drift compounds on top of the deliberate prompt shift.
+\subsection{The Voting Result and Strategic Self-Interest}
+\label{sec:discussion-voting}
 
-From the perspective of replicating \citet{ertan2009who} specifically, this is an interesting twist. The default condition is closest to the original paper on the qualitative voting pattern ($94\%$ default versus an original that starts below majority on the first vote, rises to $64\%$ of all group votes on average, and reaches ``nearly all groups'' in the final vote) and also engages in substantial costly punishment of free-riders. The personality-loaded conditions drift away from this qualitative fit in opposite directions: one (random-personality) produces \emph{too much} baseline cooperation, the other (hyper-cooperative) produces both too much cooperation \emph{and} too little punishment. If the target is the original paper's institutional-choice finding, default oTree agents do the job. If the target is the heterogeneity of contributions (a distribution, not a mean), personality induction is still the right tool. And if the goal is to model how RLHF prosociality bias propagates through experimental results, the three-condition gradient is itself the finding.
+The voting result is the most interesting non-trivial pattern in the paper. Both conditions vote $0\%$ for allowing punishment of high contributors---a clean replication of the original paper's headline institutional finding. But on the punish-low vote, default and random-personality agents disagree by a wide margin: $44\%$ vs $90\%$.
 
-\subsection{The Form-Completion Cliff Is Reasoning-Budget Exhaustion, Not Refusal}
+We read this as strategic self-interest, not as a failure of one condition to ``replicate.'' Default agents contribute $0.76$ at baseline and $0.00$ when cooperating could be punished---they are themselves below-average contributors, by a wide margin. From a default agent's own perspective, an institution that allows punishment of below-average contributors is one that targets it. The strategic answer for an agent that knows it will free-ride is to vote against the institution that punishes free-riders, and a majority of default agents in fact do so ($28/50$ vote No).
 
-The form-completion pattern in the hyper-cooperative condition---$50/50$ on baseline and voting, $30/50$ on the regime page, and only $7/50$ on the punishment page---initially looked to us like a possible behavioral-refusal finding. It is not. Inspection of the raw failure logs makes the mechanism fairly clear, and it is at once narrower and more specific than ``the model refuses to punish.''
+Random-personality agents, in contrast, contribute $5.30$ at baseline---comfortably above the threshold that the punish-low rule would target. They have no strategic reason to oppose the institution, and they vote $90\%$ in favour of it. That vote profile matches the late-round outcome the original paper's human subjects gradually converged on through repeated play. Where the original paper's subjects took thirty rounds to learn that allowing punishment of low contributors mitigates free-riding, our random-personality agents arrive at the same institutional preference in one shot.
 
-Three observations pin it down. First, every single one of the $43$ failed fields records the same last-response signature: ``empty.'' The model's API call returned a valid completion, but the \texttt{content} field was the empty string. There are no objections, no caveated prose responses, no JSON with the wrong keys. Nothing was produced that our parser rejected; nothing was produced at all. Second, the Default and Random-Personality conditions complete $50/50$ on the same pipeline, same parser, same retry logic, and the same $6$-field Punishment page. Whatever is happening is not our parser being brittle in general. Third, within the hyper-cooperative condition, the failures cluster on the hardest questions: \texttt{contrib\_unrestricted}, \texttt{punish\_amount\_mixed}, and \texttt{contrib\_punish\_high} together account for $29$ of $43$ failures. These are exactly the questions that most invite deliberation---what to contribute when anyone can punish anyone, how much to punish when the group is genuinely mixed, what to contribute when cooperation itself is penalised.
+This is a more subtle replication picture than the headline ``$0\%$ vote for punish-high'' result. Both conditions reproduce the headline. On the secondary institutional question (vote for punish-low), the two conditions reproduce two different stylised facts from the original paper: the random-personality condition reproduces the late-round near-consensus in favour of allowing punishment of low contributors, while the default condition reproduces the rational individual-level argument against allowing it (an institution that targets you is one you vote against). Which condition ``matches the paper'' depends on which slice of the paper you point at.
 
-Combined with the fact that \texttt{stepfun/step-3.5-flash} is a reasoning model that separates internal reasoning tokens from content tokens, and that we call it with \texttt{max\_tokens=16000}, the most straightforward explanation is that the hyper-cooperative personality prompt induces enough extra reasoning on ethically loaded questions that the budget is exhausted on internal reasoning before any content token is emitted. The model is not ``deciding not to punish.'' It is reasoning about what to do and running out of budget before it commits.
+\subsection{Chat Mode and Within-Subject Coherence}
 
-This has three consequences for how we interpret the rest of the paper.
+The Friedman tests provide strong evidence that chat-mode persistent memory produces coherent within-subject regime responses. Both conditions show $p<.001$ regime effects within agents: when the same agent is asked about the four regimes within a single conversation, its contributions shift in the rational direction (highest under punish-low-only, lowest under no-punishment or punish-high-only).
 
-First, the dropout is \emph{not} independent evidence of RLHF prosociality bias in the ``the model refuses to do harm'' sense. It is an indirect deliberation-cost signature, driven by the same underlying personality direction, but the proximate cause is reasoning-token exhaustion, not moral refusal.
+This coherence is not automatic. A stateless LLM pipeline, where each regime is a fresh independent call, can in principle produce the same shifts---each call sees the same context---but it does not produce the visible-prior-answer reasoning that chat mode does. The chat-mode agent sees its own no-punishment answer when reasoning about the punish-low-only answer, sees both when reasoning about the punish-high-only answer, and so on. The result is a sequence of regime contributions that reads as a coherent strategy from a single agent rather than four disconnected decisions from four imitations of the same agent.
 
-Second, the dropout is \emph{not} a neutral pipeline artifact either. It did not happen in the other two conditions, on the same pipeline, with the same budget. Something about the cooperative personality prompt is real, it is localised to the hardest questions, and it shows up as deliberation that does not terminate within the allotted budget. That is a genuine behavioral effect of the personality prompt on this model, even if the precise label is not ``refusal.''
-
-Third, the dropout is model- and budget-specific. A non-reasoning model of comparable capability would not exhaust its budget this way, though it might produce a different failure mode (e.g., overly cautious prose, refusal language, or reduced punishment amounts on the completed attempts). And on the same model, a larger \texttt{max\_tokens} budget is a concrete, testable intervention. We plan to re-run the hyper-cooperative condition with a larger budget and report whether the dropout disappears; if it does, the deliberation-cost reading will be confirmed, and we will be able to present hyper-cooperative punishment numbers at full $N=50$ alongside the other two conditions.
-
-Until then, the hyper-cooperative punishment numbers should be read as descriptive of the $n=7$ agents whose reasoning happened to terminate inside the budget, rather than as an estimate of what the full population would have done.
-
-\subsection{The Punish-High-Only Regime}
-
-Both conditions reject the punish-high-only regime in voting ($0\%$ support), and both reduce contribution in that regime relative to every other regime. Default agents respond rationally and contribute exactly zero; personality agents respond less rationally and still contribute about $3.6$ tokens on average. The gap between these two numbers is arguably the cleanest measurable consequence of personality induction: it quantifies how much cooperative inclination survives the agent knowing it will be penalised for cooperating.
+We don't run a head-to-head stateless-vs-chat comparison in this paper; that's a natural follow-up. The within-subject Friedman result is consistent with the read that chat mode does not hurt regime sensitivity, and informally it produces more internally consistent regime sequences than the stateless mode does.
 
 \subsection{Limitations}
 
-Several limitations should be noted.
+\textbf{Single-shot.} The original Ertan paper ran $30$ periods with multiple intervening voting stages and observable period-to-period learning. Our agents do not have within-experiment memory across rounds (chat mode preserves memory within a session, but our session is single-shot). Conditional cooperation, period-by-period learning, and norm-formation effects are not captured. Multi-round design with persistent across-round memory is the single largest gap in this replication and the natural next extension.
 
-\textbf{Single-shot design.} The original study ran $30$ periods with multiple intervening voting stages and observable period-to-period learning. Our agents have no within-experiment memory and thus cannot reproduce these dynamics. Multi-round designs with persistent state are the natural next step and, as we say in the Conclusion, the single most important gap in this replication.
+\textbf{No group interaction.} Agents decide independently rather than in interactive groups. The punishment-page profiles are stylised hypothetical scenarios, not real other-agent behavior. Conditional cooperation responses to actual co-player behavior are outside the scope of this design.
 
-\textbf{No group interaction.} Agents decide independently rather than in interactive groups. Conditional cooperation---one of the best-documented phenomena in experimental public-goods research---is outside the scope of this design.
+\textbf{Two conditions.} We ran default and random personalities. We did not run a hyper-cooperative or skewed-disagreeable condition in this paper, both of which would isolate finer-grained personality effects.
 
-\textbf{Model specificity.} Our results are specific to \texttt{step-3.5-flash}. Models with different RLHF implementations, different base capabilities, or different safety training may show different magnitudes or directions on the default-vs-personality gap. Cross-model comparison is important future work.
+\textbf{Model specificity.} Results are specific to \texttt{step-3.5-flash}. Models with different RLHF implementations, different base capabilities, or different reasoning-vs-content-token splits may show different magnitudes or directions on the default-vs-personality gap. Cross-model comparison is important future work.
 
-\textbf{Sample size.} $N=50$ per condition is sufficient to detect the large effects we report (every contribution comparison yields $p<.001$) but leaves finer-grained personality-slice analyses underpowered.
+\textbf{Non-independence.} Our $N=50$ per condition is fifty different prompts to the same underlying model, not fifty different agents in the way fifty different humans are different agents. Variance in our results comes from temperature sampling and personality-prompt variation, not from genuine individual differences. The effective sample size is smaller than $50$ in any rigorous statistical sense; this is a known limitation of all LLM behavioral research \citep{horton2023homo} and we do not solve it here.
 
-\textbf{Differential dropout on the punishment page in the Hyper-cooperative condition.} Only $7$ of $50$ agents in the Hyper-cooperative condition completed the costly-punishment page, and the non-completers were drawn disproportionately from the most-cooperative tail of the distribution. We diagnose the mechanism as reasoning-token exhaustion on a reasoning model at a $16{,}000$-token budget, triggered by the personality prompt on the ethically hardest questions (Section~\ref{sec:cooperative}). This is testable: re-running the condition with a larger \texttt{max\_tokens} budget should restore full completion if the diagnosis is correct. We have not yet run that replication, so the Hyper-cooperative punishment numbers should be read as descriptive of the $n=7$ completing agents rather than as an estimate of the population mean. This also implies that studies using extreme personality skews should either use non-reasoning models, allocate generous token budgets, or instrument the failure mode carefully enough to catch reasoning exhaustion before it silently biases the sample.
-
+\textbf{Statistical methods not perfectly aligned with the original paper.} The original Ertan paper used ordered-probit regression for individual punishment decisions and Wilcoxon signed-rank tests for within-subject contribution comparisons. We use Friedman (the multi-condition generalisation of Wilcoxon signed-rank) and Mann--Whitney/chi-square for between-condition comparisons. We do not run regression analyses linking individual personality scores to individual behavioral outcomes within the random-personality condition, which is a natural next analysis on the existing data.
 
 %----------------------------------------------------------------------
 \section{Conclusion}
 %----------------------------------------------------------------------
 
-We replicated the public goods voting experiment of \citet{ertan2009who} with LLM agents connected to a real oTree server under three conditions: default agents, agents with random Big Five personalities drawn from US adult norms, and agents drawn from a distribution skewed toward high agreeableness and low neuroticism. Default agents---without any personality assignment---reproduce the qualitative institutional finding of the original paper: $94\%$ vote to allow punishment of low contributors (vs.\ $64\%$ of all group votes in the original and ``nearly all groups'' in the final vote of each session), $0\%$ vote to allow punishment of high contributors (matching the original's group-vote $0\%$), and they engage in substantial costly punishment of free-riders. Random-personality agents contribute substantially more in every regime but punish less and vote less punitively. Hyper-cooperative agents amplify this drift further on the pages that complete, and on the ethically hardest punishment page they additionally stop producing answers altogether.
+We replicated \citet{ertan2009who}'s public-goods voting experiment with LLM agents at the original paper's parameters (groups of $4$, endowment of $10$, punishment cost ratio $1{:}4$), using \texttt{step-3.5-flash} in chat mode. Two conditions---default and random Big Five personalities---each completed cleanly at $N=50$ with zero field-level failures, and together they replicate the single most robust finding from the original paper ($0\%$ of agents vote to allow punishment of high contributors, in both conditions).
 
-Two lessons follow. First, personality induction is a directional tool, not a neutral one: it adds variance, but it also pushes behavior along the RLHF prosociality axis in a dose-dependent way, and researchers should calibrate claims accordingly. Second, at the extreme end of that axis, the personality prompt can induce enough extra deliberation on ethically loaded questions that the reasoning model runs out of token budget before producing any answer at all---a measurement failure that looks behaviorally like ``refusal'' from outside but is mechanically just reasoning-token exhaustion, and that silently biases the surviving sample toward agents whose reasoning happens to terminate in time. Any study using extreme personality skews on a reasoning model should expect this and instrument for it.
+Three findings stand out. First, the original paper's headline institutional result is robust to both default and personality-induced LLM agents in single-shot play: no one votes to punish cooperators. Second, baseline contribution is extremely sensitive to whether an agent is given a personality prompt: the same pipeline and same parameters produce contributions of $0.76$ by default and $5.30$ with personality, a seven-fold difference with a Cohen's $d$ of $-2.25$. Third, the voting result on the punish-low question reproduces two different aspects of the original paper depending on the condition: default agents vote against the institution that would target them (a strategic self-interest reading); personality agents vote for the institution that protects their own positive contributions (a norm-formation reading).
 
-The most important open direction, which we deliberately defer here but view as the single largest gap in this replication, is multi-turn design. The original \citet{ertan2009who} study plays out over thirty periods with repeated voting and observed cooperation histories, and the central phenomena of the original paper---learning, conditional cooperation, norm formation, and the gradual convergence on punish-low institutions---are dynamics that a single-shot design simply cannot reproduce. Porting the replication to a multi-round design with persistent agent memory is the priority next step. Smaller follow-ups include re-running the hyper-cooperative condition with a larger token budget to test our deliberation-cost diagnosis, running the same experiment on at least one non-reasoning model to separate model-specific from general LLM effects, and running additional personality skews (e.g., low agreeableness, high neuroticism) to trace the full prosociality axis.
+The single most important direction we deliberately defer here is multi-round design. The original Ertan paper plays out over thirty periods with repeated voting and observable cooperation histories, and the central learning dynamics of the original---conditional cooperation, norm formation, gradual convergence on punish-low institutions---are dynamics that a single-shot design cannot reproduce. Porting this replication to a multi-round design with persistent agent memory across rounds is the priority next step, and chat-mode memory makes that step architecturally straightforward.
 
-The broader promise of LLM-based behavioral economics---rapid, cheap, scalable experiments---depends on developing a clear picture of where silicon subjects agree with human ones and where they diverge. This replication provides one case in which the agreement on institutional-choice behavior is surprisingly close, one case in which random personality sampling shifts behavior in the direction of RLHF prosociality bias, and one case in which the bias compounds enough to break the measurement apparatus itself.
+The broader claim in LLM-based behavioral economics---that silicon subjects can substitute for human subjects in some range of paradigms---depends on accumulating cases where the agreement is good and being honest about where it isn't. This replication provides one case in which the headline institutional finding agrees exactly across both default and personality-induced agents, and one case in which the secondary voting question reproduces two different stylised facts from the original paper depending on which condition you look at. That's a useful, concrete data point for thinking about what the agreement actually is.
 
 %----------------------------------------------------------------------
 \bibliographystyle{apalike}

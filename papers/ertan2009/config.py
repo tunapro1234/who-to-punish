@@ -3,14 +3,16 @@ Ertan, Page & Putterman (2009) — paper-specific parameters and findings.
 
 "Who to Punish? Individual Decisions and Majority Rule in Mitigating the
 Free Rider Problem". European Economic Review, 53(5), 495-511.
+
+Parameters match the original paper exactly.
 """
 
-# ── Game parameters ─────────────────────────────────────────────────
+# ── Game parameters (match original paper) ──────────────────────────
 
-ENDOWMENT = 20
-GROUP_SIZE = 5
+ENDOWMENT = 10
+GROUP_SIZE = 4
 MPCR = 0.4               # marginal per capita return
-PUNISHMENT_RATIO = 3     # 1 token spent → 3 removed from target
+PUNISHMENT_RATIO = 4     # 1 token spent → 4 removed from target
 
 # ── Punishment regimes ──────────────────────────────────────────────
 
@@ -33,11 +35,12 @@ REGIMES = {
 ACTIVE_REGIMES = {k: v for k, v in REGIMES.items() if k != "no_punishment"}
 
 # ── Contribution profiles for punishment decisions ──────────────────
+# 3 other members (group of 4), endowment 10
 
 PROFILES = [
-    {"name": "all_cooperate",  "others": "18, 17, 19, 16", "avg": 17.5},
-    {"name": "mixed",          "others": "15, 5, 18, 2",   "avg": 10.0},
-    {"name": "one_freerider",  "others": "17, 18, 16, 2",  "avg": 13.25},
+    {"name": "all_cooperate",  "others": "9, 10, 8", "avg": 9.0},
+    {"name": "mixed",          "others": "8, 3, 9",  "avg": 6.67},
+    {"name": "one_freerider",  "others": "9, 8, 1",  "avg": 6.0},
 ]
 
 # ── Known findings from the paper (for comparison) ──────────────────
